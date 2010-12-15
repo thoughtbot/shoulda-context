@@ -1,7 +1,5 @@
-test/*/log/*.log
 doc
 coverage
-.svn/
 pkg
 *.swp
 *.swo
