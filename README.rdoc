@@ -1,8 +1,7 @@
-= should-context - a context framework for Test::Unit
+= shoulda-context - a context framework for Test::Unit
 
-Shoulda's contexts make it easy to write elegant, understandable, and maintainable tests for Test::Unit. It's fully compatible with your existing tests in Test::Unit, and requires no retooling to use.
-
-The #context and #should methods give you RSpec like test blocks in Test::Unit.
+Shoulda's contexts make it easy to write understandable and maintainable tests for Test::Unit.
+It's fully compatible with your existing tests in Test::Unit, and requires no retooling to use.
 
 == Contexts
 
@@ -49,4 +48,5 @@ Shoulda is maintained and funded by {thoughtbot}[http://thoughtbot.com/community
 
 = License
 
-Shoulda is Copyright © 2010 thoughtbot, inc. It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
+Shoulda is Copyright © 2010 thoughtbot, inc.
+It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
