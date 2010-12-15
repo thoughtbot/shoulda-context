@@ -1,4 +1,4 @@
-= shoulda-context - a context framework for Test::Unit
+= shoulda-context
 
 Shoulda's contexts make it easy to write understandable and maintainable tests for Test::Unit.
 It's fully compatible with your existing tests in Test::Unit, and requires no retooling to use.
@@ -14,7 +14,7 @@ Stop killing your fingers with all of those underscores...  Name your tests with
       end
 
       should "return its full name" do
-        assert_equal 'John Doe', @user.full_name
+        assert_equal "John Doe", @user.full_name
       end
 
       context "with a profile" do
@@ -44,7 +44,7 @@ So readable!
 
 = Credits
 
-Shoulda is maintained and funded by {thoughtbot}[http://thoughtbot.com/community]
+Shoulda is maintained and funded by {thoughtbot}[http://thoughtbot.com/community].
 
 = License
 
