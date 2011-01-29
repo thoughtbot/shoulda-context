@@ -26,9 +26,16 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
       assert_raises(Test::Unit::AssertionFailedError) do
         assert_same_elements(@a, [3, 3, "def", "abc"])
       end
+      assert_same_elements([@a, "abc"].flatten, ["abc", 3, "def", "abc"])
       assert_raises(Test::Unit::AssertionFailedError) do
         assert_same_elements([@a, "abc"].flatten, [3, 3, "def", "abc"])
       end
+    end
+
+    should "only count the number of occurrences once for each unique value" do
+      a1 = [@a, "abc"].flatten
+      a1.expects(:select).times(3).returns(["abc", "abc"], ["def"], [3])
+      assert_same_elements(a1, ["abc", 3, "def", "abc"])
     end
   end
 
