@@ -128,6 +128,15 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     end
   end
 
+  def test_should_create_a_new_context_even_if_block_is_omitted
+    old_verbose, $VERBOSE = $VERBOSE, nil
+    assert_nothing_raised do
+      Shoulda::Context::Context.new("context without a block", self)
+    end
+  ensure
+    $VERBOSE = old_verbose
+  end
+
   def test_should_create_a_nested_context
     assert_nothing_raised do
       parent = Shoulda::Context::Context.new("Parent", self) do; end
