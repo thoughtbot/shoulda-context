@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.email = %q{support@thoughtbot.com}
   s.executables = ["convert_to_should_syntax"]
   s.extra_rdoc_files = ["README.rdoc", "CONTRIBUTION_GUIDELINES.rdoc"]
-  s.files = Dir["[A-Z]*", "{bin,lib,rails,test}/**/*"]
+  s.files = Dir["[A-Z]*", "{bin,lib,rails,test}/**/*", "init.rb"]
   s.homepage = %q{http://thoughtbot.com/community/}
   s.rdoc_options = ["--line-numbers", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
