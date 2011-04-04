@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.description = %q{Context framework extracted from Shoulda}
 
   s.add_development_dependency "mocha", "~> 0.9.10"
+  s.add_development_dependency "rake"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
