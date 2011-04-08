@@ -330,6 +330,7 @@ module Shoulda
         if name_or_matcher.respond_to?(:description) && name_or_matcher.respond_to?(:matches?)
           name = name_or_matcher.description
           blk = lambda { assert_accepts name_or_matcher, subject }
+          options[:before] = lambda { name_or_matcher.before } if name_or_matcher.respond_to?(:before)
         else
           name = name_or_matcher
         end
@@ -344,7 +345,8 @@ module Shoulda
       def should_not(matcher)
         name = matcher.description
         blk = lambda { assert_rejects matcher, subject }
-        self.shoulds << { :name => "not #{name}", :block => blk }
+        before = lambda { matcher.before } if matcher.respond_to?(:before)
+        self.shoulds << { :name => "not #{name}", :block => blk, :before => before }
       end
 
       def should_eventually(name, &blk)
