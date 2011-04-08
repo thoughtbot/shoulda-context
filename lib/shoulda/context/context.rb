@@ -345,7 +345,7 @@ module Shoulda
       def should_not(matcher)
         name = matcher.description
         blk = lambda { assert_rejects matcher, subject }
-        before = lambda { matcher.before } if matcher.respond_to?(:before)
+        before = matcher.respond_to?(:before) ? lambda { matcher.before } : nil
         self.shoulds << { :name => "not #{name}", :block => blk, :before => before }
       end
 
