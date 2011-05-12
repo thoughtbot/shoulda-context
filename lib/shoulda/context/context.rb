@@ -73,7 +73,7 @@ module Shoulda
         if Shoulda::Context.current_context
           Shoulda::Context.current_context.should(name_or_matcher, options, &blk)
         else
-          context_name = self.name.gsub(/Test/, "")
+          context_name = self.name.gsub(/Test/, "") if self.name
           context = Shoulda::Context::Context.new(context_name, self) do
             should(name_or_matcher, options, &blk)
           end
@@ -92,7 +92,7 @@ module Shoulda
         if Shoulda::Context.current_context
           Shoulda::Context.current_context.should_not(matcher)
         else
-          context_name = self.name.gsub(/Test/, "")
+          context_name = self.name.gsub(/Test/, "") if self.name
           context = Shoulda::Context::Context.new(context_name, self) do
             should_not(matcher)
           end

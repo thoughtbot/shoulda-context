@@ -209,8 +209,8 @@ class ShouldMatcherTest < Test::Unit::TestCase
     end
   end
 
-  def run_test
-    @test_suite.run(@test_result) { |event, name |}
+  def run_test_suite
+    @test_suite.run(@test_result) { |event, name| }
   end
 
   def setup
@@ -249,19 +249,19 @@ class ShouldMatcherTest < Test::Unit::TestCase
 
     should "pass with a passing matcher" do
       @matcher.fail = false
-      run_test
+      run_test_suite
       assert_passed @test_result
     end
 
     should "fail with a failing matcher" do
       @matcher.fail = true
-      run_test
+      run_test_suite
       assert_failed_with @matcher.failure_message, @test_result
     end
 
     should "provide the subject" do
       @matcher.fail = false
-      run_test
+      run_test_suite
       assert_equal 'a subject', @matcher.subject
     end
   end
@@ -273,19 +273,19 @@ class ShouldMatcherTest < Test::Unit::TestCase
 
     should "pass with a failing matcher" do
       @matcher.fail = true
-      run_test
+      run_test_suite
       assert_passed @test_result
     end
 
     should "fail with a passing matcher" do
       @matcher.fail = false
-      run_test
+      run_test_suite
       assert_failed_with @matcher.negative_failure_message, @test_result
     end
 
     should "provide the subject" do
       @matcher.fail = false
-      run_test
+      run_test_suite
       assert_equal 'a subject', @matcher.subject
     end
   end
