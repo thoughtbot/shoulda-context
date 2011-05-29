@@ -61,19 +61,36 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
     end
 
     context "when given to assert_rejects" do
-      setup do
-        begin
-          assert_rejects @matcher, 'target'
-        rescue Test::Unit::AssertionFailedError => @error
+      context "and matcher has :does_not_match?" do
+        setup do
+          begin
+            @matcher.stubs(:matches?).returns(false)
+            @matcher.stubs(:does_not_match?).returns(true)
+            assert_rejects @matcher, 'target'
+          rescue Test::Unit::AssertionFailedError => @error
+          end
+        end
+
+        should "pass" do
+          assert_nil @error
         end
       end
 
-      should "fail" do
-        assert_not_nil @error
-      end
+      context "and matcher does not have :does_not_match?" do
+        setup do
+          begin
+            assert_rejects @matcher, 'target'
+          rescue Test::Unit::AssertionFailedError => @error
+          end
+        end
 
-      should "use the error message from the matcher" do
-        assert_equal 'big time failure', @error.message
+        should "fail" do
+          assert_not_nil @error
+        end
+
+        should "use the error message from the matcher" do
+          assert_equal 'big time failure', @error.message
+        end
       end
     end
   end

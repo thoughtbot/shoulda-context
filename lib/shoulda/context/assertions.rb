@@ -61,13 +61,16 @@ module Shoulda # :nodoc:
         end
       end
 
-      # Asserts that the given matcher returns false when +target+ is passed to #matches?
+      # Asserts that the given matcher returns true when +target+ is passed to #does_not_match?
+      # or false when +target+ is passed to #matches? if #does_not_match? is not implemented
       def assert_rejects(matcher, target, options = {})
         if matcher.respond_to?(:in_context)
           matcher.in_context(self)
         end
 
-        unless matcher.matches?(target)
+        not_match = matcher.respond_to?(:does_not_match?) ? matcher.does_not_match?(target) : !matcher.matches?(target)
+
+        if not_match
           assert_block { true }
           if options[:message]
             assert_match options[:message], matcher.failure_message
