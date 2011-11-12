@@ -18,9 +18,6 @@ Gem::Specification.new do |s|
   s.executables      = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths    = ["lib"]
 
-  s.extra_rdoc_files = ["README.rdoc", "CONTRIBUTION_GUIDELINES.rdoc"]
-  s.rdoc_options     = ["--line-numbers", "--main", "README.rdoc"]
-
   s.add_development_dependency("mocha", "~> 0.9.10")
   s.add_development_dependency("rake")
   s.add_development_dependency("test-unit", "~> 2.0")
