@@ -1,8 +1,5 @@
-require 'bundler'
-require 'rake'
+require 'bundler/gem_tasks'
 require 'rake/testtask'
-
-Bundler::GemHelper.install_tasks
 
 $LOAD_PATH.unshift("lib")
 load 'tasks/shoulda.rake'
