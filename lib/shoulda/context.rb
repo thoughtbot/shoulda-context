@@ -1,4 +1,4 @@
-require 'test/unit'
+require 'test/unit/testcase'
 require 'shoulda/context/version'
 require 'shoulda/context/proc_extensions'
 require 'shoulda/context/assertions'
