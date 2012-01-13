@@ -1,5 +1,13 @@
 = shoulda-context
 
+== DEPRECATED
+
+This gem is deprecated. Please use RSpec describe blocks instead (but don't nest them too heavily!).
+
+If you wish to take over this project please {email us}[mailto:support@thoughtbot.com].
+
+== Synopsis
+
 {Official Documentation}[http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames]
 
 Shoulda's contexts make it easy to write understandable and maintainable tests for Test::Unit.
