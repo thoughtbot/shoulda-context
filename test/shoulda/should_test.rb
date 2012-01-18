@@ -212,6 +212,45 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     context.build
   end
 
+  def test_should_be_able_to_define_new_verb_methods
+    Shoulda::Context.add_verb("must")
+
+    tu_class = Test::Unit::TestCase
+    context = Shoulda::Context::Context.new("A Context", tu_class) do
+      must "define the test" do; end
+    end
+
+    tu_class.expects(:define_method).with(:"test: A Context must define the test. ")
+    context.build
+  end
+
+  def test_should_be_able_to_define_new_verb_methods_with_verb_names
+    Shoulda::Context.add_verb("it", "")
+
+    tu_class = Test::Unit::TestCase
+    context = Shoulda::Context::Context.new("A Context", tu_class) do
+      it "must define the test" do; end
+    end
+
+    tu_class.expects(:define_method).with(:"test: A Context must define the test. ")
+    context.build
+  end
+
+
+  def test_should_create_test_methods_with_verbs_on_build_when_subcontext
+    Shoulda::Context.add_verb("must")
+
+    tu_class = Test::Unit::TestCase
+    context = Shoulda::Context::Context.new("A Context", tu_class) do
+      context "with a child" do
+        must "define the test" do; end
+      end
+    end
+
+    tu_class.expects(:define_method).with(:"test: A Context with a child must define the test. ")
+    context.build
+  end
+
   # Test::Unit integration
 
   def test_should_create_a_new_context_and_build_it_on_Test_Unit_context

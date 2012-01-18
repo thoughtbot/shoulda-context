@@ -17,6 +17,15 @@ module Shoulda
       def remove_context # :nodoc:
         self.contexts.pop
       end
+      
+      def add_verb(name, verb=nil)
+        Shoulda::Context::ClassMethods.class_eval(<<-EOS, __FILE__, __LINE__ + 1)
+          def #{name}(name_or_matcher, options = {}, &block)
+            options = {:verb => %(#{verb || name})}
+            should(name_or_matcher, options, &block)
+          end
+        EOS
+      end
     end
 
     module ClassMethods
@@ -335,9 +344,9 @@ module Shoulda
         end
 
         if blk
-          self.shoulds << { :name => name, :before => options[:before], :block => blk }
+          self.shoulds << { :name => name, :before => options[:before], :verb => options[:verb], :block => blk }
         else
-         self.should_eventuallys << { :name => name }
+          self.should_eventuallys << { :name => name, :verb => options[:verb] }
        end
       end
 
@@ -380,7 +389,11 @@ module Shoulda
       end
 
       def create_test_from_should_hash(should)
-        test_name = ["test:", full_name, "should", "#{should[:name]}. "].flatten.join(' ').to_sym
+        if !should[:verb].nil? && should[:verb].empty?
+          test_name = ["test:", full_name, "#{should[:name]}. "].flatten.join(' ').to_sym
+        else 
+          test_name = ["test:", full_name, should[:verb] || "should", "#{should[:name]}. "].flatten.join(' ').to_sym
+        end
 
         if test_methods[test_unit_class][test_name.to_s] then
           warn "  * WARNING: '#{test_name}' is already defined"
