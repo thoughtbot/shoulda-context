@@ -31,8 +31,8 @@ context, setup, and should blocks...
 
 ... which combine to produce the following test methods:
 
-  "test: A User instance should return its full name."
-  "test: A User instance with a profile should return true when sent #has_profile?."
+  "test: a calculator should add two numbers for the sum."
+  "test: a calculator should multiple two numbers for the product."
 
 == Assertions
 
@@ -50,5 +50,5 @@ Thank you to all the {contributors}[https://github.com/thoughtbot/shoulda-contex
 
 = License
 
-Shoulda is Copyright © 2006-2010 thoughtbot, inc.
+Shoulda is Copyright © 2006-2012 thoughtbot, inc.
 It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
