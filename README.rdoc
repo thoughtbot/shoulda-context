@@ -31,8 +31,8 @@ context, setup, and should blocks...
 
 ... which combine to produce the following test methods:
 
-  "test: A User instance should return its full name."
-  "test: A User instance with a profile should return true when sent #has_profile?."
+  "test: a calculator should add two numbers for the sum."
+  "test: a calculator should multiple two numbers for the product."
 
 == Assertions
 
