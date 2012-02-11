@@ -1,6 +1,7 @@
 .bundle
 Gemfile.lock
 vendor/ruby
+vendor/cache
 doc
 coverage
 pkg
