@@ -32,7 +32,7 @@ context, setup, and should blocks...
 ... which combine to produce the following test methods:
 
   "test: a calculator should add two numbers for the sum."
-  "test: a calculator should multiple two numbers for the product."
+  "test: a calculator should multiply two numbers for the product."
 
 == Assertions
 
