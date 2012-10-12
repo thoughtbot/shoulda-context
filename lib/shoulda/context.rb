@@ -1,4 +1,7 @@
-require 'test/unit'
+if !defined?(Test::Unit::TestCase)
+  require 'test/unit'
+end
+
 require 'shoulda/context/version'
 require 'shoulda/context/proc_extensions'
 require 'shoulda/context/assertions'
