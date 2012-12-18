@@ -1,5 +1,5 @@
 if !defined?(Test::Unit::TestCase)
-  require 'test/unit'
+  require 'test/unit/testcase'
 end
 
 require 'shoulda/context/version'
