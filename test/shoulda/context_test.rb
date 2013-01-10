@@ -6,7 +6,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     context "with a subcontext made by a macro" do
       setup { @context_macro = :foo }
 
-      merge_block &blk
+      merge_block(&blk)
     end
   end
 
