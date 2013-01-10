@@ -33,7 +33,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
 
   def self.should_not_see_blah
     should "not see @blah through a macro" do
-      assert_nil @blah
+      assert !instance_variable_defined?(:@blah)
     end
   end
 
