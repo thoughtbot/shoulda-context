@@ -141,6 +141,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     assert_nothing_raised do
       parent = Shoulda::Context::Context.new("Parent", self) do; end
       child  = Shoulda::Context::Context.new("Child", parent) do; end
+      raise unless child.instance_of? Shoulda::Context::Context
     end
   end
 
