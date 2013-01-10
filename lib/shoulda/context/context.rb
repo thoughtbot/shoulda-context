@@ -344,8 +344,8 @@ module Shoulda
         if blk
           self.shoulds << { :name => name, :before => options[:before], :block => blk }
         else
-         self.should_eventuallys << { :name => name }
-       end
+          self.should_eventuallys << { :name => name }
+        end
       end
 
       def should_not(matcher)
