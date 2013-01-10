@@ -226,7 +226,7 @@ module Shoulda
       end
 
       def subject_block # :nodoc:
-        @subject_block
+        @subject_block ||= nil
       end
     end
 
@@ -307,6 +307,7 @@ module Shoulda
         self.shoulds            = []
         self.should_eventuallys = []
         self.subcontexts        = []
+        self.subject_block      = nil
 
         if block_given?
           merge_block(&blk)
