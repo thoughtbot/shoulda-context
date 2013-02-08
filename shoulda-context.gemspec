@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = %q{http://thoughtbot.com/community/}
   s.summary     = %q{Context framework extracted from Shoulda}
   s.description = %q{Context framework extracted from Shoulda}
+  s.license     = %q{MIT}
 
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- {test,spec,features}/*`.split("\n")
