@@ -1,4 +1,4 @@
-# shoulda-context
+# shoulda-context [![Gem Version](https://badge.fury.io/rb/shoulda-context.png)](http://badge.fury.io/rb/shoulda-context) [![Build Status](https://travis-ci.org/thoughtbot/shoulda-context.png?branch=master)](https://travis-ci.org/thoughtbot/shoulda-context)
 
 [Official Documentation](http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames)
 
