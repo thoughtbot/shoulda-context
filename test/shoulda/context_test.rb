@@ -6,7 +6,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     context "with a subcontext made by a macro" do
       setup { @context_macro = :foo }
 
-      merge_block &blk
+      merge_block(&blk)
     end
   end
 
@@ -90,7 +90,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
 
   context "another context" do
     should "not define @blah" do
-      assert_nil @blah
+      assert !instance_variable_defined?(:@blah)
     end
   end
 

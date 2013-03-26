@@ -33,7 +33,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
 
   def self.should_not_see_blah
     should "not see @blah through a macro" do
-      assert_nil @blah
+      assert !instance_variable_defined?(:@blah)
     end
   end
 
@@ -141,6 +141,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     assert_nothing_raised do
       parent = Shoulda::Context::Context.new("Parent", self) do; end
       child  = Shoulda::Context::Context.new("Child", parent) do; end
+      raise unless child.instance_of? Shoulda::Context::Context
     end
   end
 
