@@ -1,10 +1,10 @@
 module Shoulda
   module Context
     class << self
-      attr_accessor :contexts
       def contexts # :nodoc:
         @contexts ||= []
       end
+      attr_writer :contexts
 
       def current_context # :nodoc:
         self.contexts.last
@@ -226,7 +226,7 @@ module Shoulda
       end
 
       def subject_block # :nodoc:
-        @subject_block
+        @subject_block ||= nil
       end
     end
 
@@ -290,7 +290,13 @@ module Shoulda
       attr_accessor :teardown_blocks    # blocks given via teardown methods
       attr_accessor :shoulds            # array of hashes representing the should statements
       attr_accessor :should_eventuallys # array of hashes representing the should eventually statements
-      attr_accessor :subject_block
+
+      # accessor with cache
+      def subject_block
+        return @subject_block if @subject_block
+        parent.subject_block
+      end
+      attr_writer :subject_block
 
       def initialize(name, parent, &blk)
         Shoulda::Context.add_context(self)
@@ -301,6 +307,7 @@ module Shoulda
         self.shoulds            = []
         self.should_eventuallys = []
         self.subcontexts        = []
+        self.subject_block      = nil
 
         if block_given?
           merge_block(&blk)
@@ -337,8 +344,8 @@ module Shoulda
         if blk
           self.shoulds << { :name => name, :before => options[:before], :block => blk }
         else
-         self.should_eventuallys << { :name => name }
-       end
+          self.should_eventuallys << { :name => name }
+        end
       end
 
       def should_not(matcher)
@@ -353,11 +360,6 @@ module Shoulda
 
       def subject(&block)
         self.subject_block = block
-      end
-
-      def subject_block
-        return @subject_block if @subject_block
-        parent.subject_block
       end
 
       def full_name

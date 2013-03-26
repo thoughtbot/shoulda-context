@@ -63,6 +63,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
     context "when given to assert_rejects" do
       context "and matcher has :does_not_match?" do
         setup do
+          @error = nil
           begin
             @matcher.stubs(:matches?).returns(false)
             @matcher.stubs(:does_not_match?).returns(true)
@@ -78,6 +79,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
 
       context "and matcher does not have :does_not_match?" do
         setup do
+          @error = nil
           begin
             assert_rejects @matcher, 'target'
           rescue Test::Unit::AssertionFailedError => @error
