@@ -10,13 +10,6 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     end
   end
 
-  # def self.context_macro(&blk)
-  #   context "with a subcontext made by a macro" do
-  #     setup { @context_macro = :foo }
-  #     yield # <- this doesn't work.
-  #   end
-  # end
-
   context "context with setup block" do
     setup do
       @blah = "blah"
@@ -200,12 +193,12 @@ class ShouldMatcherTest < Test::Unit::TestCase
       !@fail
     end
 
-    def failure_message
-      "a failure message"
+    def failure_message_for_should
+      "failure message for should"
     end
 
-    def negative_failure_message
-      "not a failure message"
+    def failure_message_for_should_not
+      "failure message for should not"
     end
   end
 
@@ -256,7 +249,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
     should "fail with a failing matcher" do
       @matcher.fail = true
       run_test_suite
-      assert_failed_with @matcher.failure_message, @test_result
+      assert_failed_with "failure message for should", @test_result
     end
 
     should "provide the subject" do
@@ -280,7 +273,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
     should "fail with a passing matcher" do
       @matcher.fail = false
       run_test_suite
-      assert_failed_with @matcher.negative_failure_message, @test_result
+      assert_failed_with "failure message for should not", @test_result
     end
 
     should "provide the subject" do
@@ -365,4 +358,3 @@ class SubjectLazinessTest < Test::Unit::TestCase
     assert_equal subject, subject
   end
 end
-

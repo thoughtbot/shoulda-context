@@ -41,9 +41,9 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
 
   context "a matching matcher" do
     setup do
-      @matcher = stub('matcher', :matches?                 => true,
-                                 :failure_message          => 'bad failure message',
-                                 :negative_failure_message => 'big time failure')
+      @matcher = stub('matcher', :matches?                       => true,
+                                 :failure_message_for_should     => 'bad failure message',
+                                 :failure_message_for_should_not => 'big time failure')
     end
 
     should "pass when given to assert_accepts with no message expectation" do
@@ -98,6 +98,46 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
   end
 
   context "a non-matching matcher" do
+    setup do
+      @matcher = stub('matcher', :matches?                       => false,
+                                 :failure_message_for_should     => 'big time failure',
+                                 :failure_message_for_should_not => 'bad failure message')
+    end
+
+    should "pass when given to assert_rejects with no message expectation" do
+      assert_rejects @matcher, 'target'
+    end
+
+    should "pass when given to assert_rejects with a matching message" do
+      assert_rejects @matcher, 'target', :message => /big time/
+    end
+
+    should "fail when given to assert_rejects with a non-matching message" do
+      assert_raise Test::Unit::AssertionFailedError do
+        assert_rejects @matcher, 'target', :message => /small time/
+      end
+    end
+
+    context "when given to assert_accepts" do
+      setup do
+        begin
+          assert_accepts @matcher, 'target'
+        rescue Test::Unit::AssertionFailedError => @error
+        end
+      end
+
+      should "fail" do
+        assert_not_nil @error
+      end
+
+      should "use the error message from the matcher" do
+        assert_equal 'big time failure', @error.message
+      end
+    end
+  end
+
+
+  context "a matcher using antiquated syntax" do
     setup do
       @matcher = stub('matcher', :matches?                 => false,
                                  :failure_message          => 'big time failure',
