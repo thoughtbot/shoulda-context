@@ -1,11 +1,11 @@
 begin
-  # if present, then also loads MiniTest::Spec
+  # if present, then also loads MiniTest::Unit::TestCase
   ActiveSupport::TestCase
 rescue
 end
 
-if defined?([ActiveSupport::TestCase, MiniTest::Spec]) && (ActiveSupport::TestCase.ancestors.include?(MiniTest::Spec))
-  base_test_case = MiniTest::Spec
+if defined?([ActiveSupport::TestCase, MiniTest::Unit::TestCase]) && (ActiveSupport::TestCase.ancestors.include?(MiniTest::Unit::TestCase))
+  base_test_case = MiniTest::Unit::TestCase
 else
   if !defined?(Test::Unit::TestCase)
     require 'test/unit/testcase'
