@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths    = ["lib"]
 
   s.add_development_dependency("appraisal", "~> 0.5")
-  s.add_development_dependency("rails", "3.2.9")
+  s.add_development_dependency("rails", ">= 3.0")
   s.add_development_dependency("mocha", "~> 0.9.10")
   s.add_development_dependency("rake")
   s.add_development_dependency("test-unit", "~> 2.1.0")

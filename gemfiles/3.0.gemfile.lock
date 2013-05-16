@@ -1,7 +1,7 @@
 PATH
   remote: /Users/rmcgeary/work/oss/shoulda-context
   specs:
-    shoulda-context (1.0.2)
+    shoulda-context (1.1.1)
 
 GEM
   remote: http://rubygems.org/
@@ -33,7 +33,7 @@ GEM
       activemodel (= 3.0.17)
       activesupport (= 3.0.17)
     activesupport (3.0.17)
-    appraisal (0.5.1)
+    appraisal (0.5.2)
       bundler
       rake
     arel (2.0.10)
@@ -41,13 +41,13 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
-    json (1.7.7)
-    mail (2.2.19)
+    json (1.8.0)
+    mail (2.2.20)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.21)
+    mime-types (1.23)
     mocha (0.9.12)
     polyglot (0.3.3)
     rack (1.2.8)
