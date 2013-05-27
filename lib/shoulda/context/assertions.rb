@@ -52,14 +52,14 @@ module Shoulda # :nodoc:
         end
 
         if matcher.matches?(target)
-          assert_block { true }
+          safe_assert_block { true }
           if options[:message]
             message = matcher.respond_to?(:failure_message_for_should_not) ? matcher.failure_message_for_should_not : matcher.negative_failure_message
             assert_match options[:message], message
           end
         else
           message = matcher.respond_to?(:failure_message_for_should) ? matcher.failure_message_for_should : matcher.failure_message
-          assert_block(message) { false }
+          safe_assert_block(message) { false }
         end
       end
 
@@ -73,14 +73,22 @@ module Shoulda # :nodoc:
         not_match = matcher.respond_to?(:does_not_match?) ? matcher.does_not_match?(target) : !matcher.matches?(target)
 
         if not_match
-          assert_block { true }
+          safe_assert_block { true }
           if options[:message]
             message = matcher.respond_to?(:failure_message_for_should) ? matcher.failure_message_for_should : matcher.failure_message
             assert_match options[:message], message
           end
         else
           message = matcher.respond_to?(:failure_message_for_should_not) ? matcher.failure_message_for_should_not : matcher.negative_failure_message
-          assert_block(message) { false }
+          safe_assert_block(message) { false }
+        end
+      end
+
+      def safe_assert_block(message = nil, &block)
+        if respond_to?(:assert_block)
+          assert_block message, &block
+        else
+          assert yield, message
         end
       end
     end
