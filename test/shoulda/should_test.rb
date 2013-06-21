@@ -46,7 +46,6 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   end
 
   context "Context" do
-
     should_see_class_methods
     should_see_a_context_block_like_a_Test_Unit_class
     should_be_able_to_make_context_macros("Context ")
@@ -153,6 +152,20 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     assert_equal "Parent", parent.full_name
     assert_equal "Parent Child", child.full_name
     assert_equal "Parent Child GrandChild", grandchild.full_name
+  end
+
+  def test_should_raise_on_duplicate_naming
+  tu_class = Test::Unit::TestCase
+   context = Shoulda::Context::Context.new("DupContext", tu_class) do
+      should "dup" do; end
+      should "dup" do; end
+    end
+
+    names = context.shoulds.map {|s| s[:name]}
+    assert_equal 1, names.uniq.length
+    assert_raise DuplicateTestError do
+      context.build
+    end
   end
 
   # Should statements

@@ -385,7 +385,7 @@ module Shoulda
         test_name = ["test:", full_name, "should", "#{should[:name]}. "].flatten.join(' ').to_sym
 
         if test_methods[test_unit_class][test_name.to_s] then
-          warn "  * WARNING: '#{test_name}' is already defined"
+          raise DuplicateTestError, "'#{test_name}' is defined more than once."
         end
 
         test_methods[test_unit_class][test_name.to_s] = true
@@ -450,3 +450,5 @@ module Shoulda
     end
   end
 end
+
+class DuplicateTestError < RuntimeError; end
