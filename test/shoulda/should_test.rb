@@ -162,7 +162,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     end
 
     names = context.shoulds.map {|s| s[:name]}
-    assert_equal 1, names.uniq.length
+    assert_equal 2, names.length
     assert_raise DuplicateTestError do
       context.build
     end
