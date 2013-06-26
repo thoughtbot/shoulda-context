@@ -84,7 +84,7 @@ module Shoulda # :nodoc:
         end
       end
 
-      def safe_assert_block(message = nil, &block)
+      def safe_assert_block(message = "assert_block failed.", &block)
         if respond_to?(:assert_block)
           assert_block message, &block
         else
