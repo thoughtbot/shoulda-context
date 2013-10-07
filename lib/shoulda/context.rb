@@ -31,3 +31,5 @@ module ShouldaContextLoadable
 end
 
 base_test_case.class_eval { include ShouldaContextLoadable }
+
+require "shoulda/railtie" if defined?(Rails)
