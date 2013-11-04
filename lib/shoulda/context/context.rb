@@ -318,7 +318,12 @@ module Shoulda
       end
 
       def merge_block(&blk)
-        blk.bind(self).call
+        if self.respond_to?(:instance_exec)
+          self.instance_exec(&blk)
+        else
+          # deprecated in Rails 4.x
+          blk.bind(self).call
+        end
       end
 
       def context(name, &blk)
@@ -395,9 +400,21 @@ module Shoulda
           @shoulda_context = context
           begin
             context.run_parent_setup_blocks(self)
-            should[:before].bind(self).call if should[:before]
+            if should[:before]
+              if self.respond_to?(:instance_exec)
+                self.instance_exec(&should[:before])
+              else
+                # deprecated in Rails 4.x
+                should[:before].bind(self).call
+              end
+            end
             context.run_current_setup_blocks(self)
-            should[:block].bind(self).call
+            if self.respond_to?(:instance_exec)
+              self.instance_exec(&should[:block])
+            else
+              # deprecated in Rails 4.x
+              should[:block].bind(self).call
+            end
           ensure
             context.run_all_teardown_blocks(self)
           end
@@ -415,13 +432,23 @@ module Shoulda
 
       def run_current_setup_blocks(binding)
         setup_blocks.each do |setup_block|
-          setup_block.bind(binding).call
+          if binding.respond_to?(:instance_exec)
+            binding.instance_exec(&setup_block)
+          else
+            # deprecated in Rails 4.x
+            setup_block.bind(binding).call
+          end
         end
       end
 
       def run_all_teardown_blocks(binding)
         teardown_blocks.reverse.each do |teardown_block|
-          teardown_block.bind(binding).call
+          if binding.respond_to?(:instance_exec)
+            binding.instance_exec(&teardown_block)
+          else
+            # deprecated in Rails 4.x
+            teardown_block.bind(binding).call
+          end
         end
         self.parent.run_all_teardown_blocks(binding) if am_subcontext?
       end
