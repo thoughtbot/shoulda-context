@@ -15,7 +15,7 @@ appraise 'rails_3_2' do
 end
 
 appraise 'rails_4_0' do
-  gem 'rails', '4.0.0.rc1'
+  gem 'rails', '~> 4.0.0'
   gem 'jquery-rails'
-  gem 'sass-rails', '4.0.0.rc1'
+  gem 'sass-rails'
 end
