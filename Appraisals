@@ -19,3 +19,11 @@ appraise 'rails_4_0' do
   gem 'jquery-rails'
   gem 'sass-rails'
 end
+
+appraise 'minitest_4_x' do
+  gem 'minitest', '~> 4.0'
+end
+
+appraise 'test_unit' do
+  gem 'test-unit'
+end
