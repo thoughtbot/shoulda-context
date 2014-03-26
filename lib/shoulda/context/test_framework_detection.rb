@@ -4,6 +4,7 @@ module Shoulda
       def self.possible_test_frameworks
         [
           -> { ActiveSupport::TestCase },
+          -> { Minitest::Test },
           -> { MiniTest::Unit::TestCase },
           -> { Test::Unit::TestCase }
         ]

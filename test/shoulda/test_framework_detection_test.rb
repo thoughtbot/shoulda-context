@@ -2,6 +2,12 @@ require 'test_helper'
 require 'tempfile'
 
 class TestFrameworkDetectionTest < Test::Unit::TestCase
+  if CURRENT_APPRAISAL_NAME == 'rails_4_1'
+    should 'detect Minitest 5.x w/ Rails 4.1' do
+      assert_integration_with_rails_and 'Minitest::Test', 'Minitest::Unit::TestCase'
+    end
+  end
+
   if CURRENT_APPRAISAL_NAME == 'rails_4_0'
     should 'detect ActiveSupport::TestCase and Minitest 4.x w/ Rails 4.0' do
       assert_integration_with_rails_and 'MiniTest::Unit::TestCase'
@@ -23,6 +29,15 @@ class TestFrameworkDetectionTest < Test::Unit::TestCase
   if CURRENT_APPRAISAL_NAME == 'rails_3_0'
     should 'detect ActiveSupport::TestCase and Test::Unit::TestCase w/ Rails 3.0' do
       assert_integration_with_rails_and 'Test::Unit::TestCase'
+    end
+  end
+
+  if CURRENT_APPRAISAL_NAME == 'minitest_5_x'
+    should 'detect Minitest 5.x when it is loaded standalone' do
+      assert_integration_with 'Minitest::Test', 'Minitest::Unit::TestCase',
+        setup: <<-RUBY
+          require 'minitest/autorun'
+        RUBY
     end
   end
 
@@ -53,8 +68,12 @@ class TestFrameworkDetectionTest < Test::Unit::TestCase
     test_cases = ['ActiveSupport::TestCase'] | test_cases
     options = test_cases.last.is_a?(Hash) ? test_cases.pop : {}
     options[:setup] = <<-RUBY
-      require 'rails'
+      require 'rails/all'
       require 'rails/test_help'
+      ActiveRecord::Base.establish_connection(
+        adapter: 'sqlite3',
+        database: ':memory:'
+      )
     RUBY
     args = test_cases + [options]
 
@@ -94,7 +113,7 @@ class TestFrameworkDetectionTest < Test::Unit::TestCase
 
     test_cases.each do |test_case|
       output = execute(file_that_runs_a_test_within_test_case(test_case, [setup]))
-      assert_match /1 tests/, output
+      assert_match /1 (tests|runs)/, output
       assert_match /1 assertions/, output
       assert_match /0 failures/, output
       assert_match /0 errors/, output
