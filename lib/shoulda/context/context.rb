@@ -387,7 +387,7 @@ module Shoulda
       end
 
       def create_test_from_should_hash(should)
-        test_name = ["test:", full_name, "should", "#{should[:name]}. "].flatten.join(' ').to_sym
+        test_name = [test_name_prefix, full_name, "should", "#{should[:name]}. "].flatten.join(' ').to_sym
 
         if test_methods[test_unit_class][test_name.to_s] then
           raise DuplicateTestError, "'#{test_name}' is defined more than once."
@@ -470,10 +470,17 @@ module Shoulda
         print_should_eventuallys
       end
 
+      def test_name_prefix
+        if defined?(Minitest) || defined?(MiniTest)
+          'test_:'
+        else
+          'test:'
+        end
+      end
+
       def method_missing(method, *args, &blk)
         test_unit_class.send(method, *args, &blk)
       end
-
     end
   end
 end
