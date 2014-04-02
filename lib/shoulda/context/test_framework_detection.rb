@@ -3,10 +3,10 @@ module Shoulda
     module TestFrameworkDetection
       def self.possible_test_frameworks
         [
-          -> { ActiveSupport::TestCase },
-          -> { Minitest::Test },
-          -> { MiniTest::Unit::TestCase },
-          -> { Test::Unit::TestCase }
+          lambda { ActiveSupport::TestCase },
+          lambda { Minitest::Test },
+          lambda { MiniTest::Unit::TestCase },
+          lambda { Test::Unit::TestCase }
         ]
       end
 
