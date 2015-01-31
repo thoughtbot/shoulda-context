@@ -34,6 +34,15 @@ context, setup, and should blocks...
     "test: a calculator should add two numbers for the sum."
     "test: a calculator should multiply two numbers for the product."
 
+When running a single test method via (example from a Rails context):
+
+    ruby -I"lib:test" path_to_test_file -n name_of_the_test_method
+
+you should include a trailing space(!), e.g.,
+
+    ruby -I"lib:test" path_to_test_file -n "test: a calculator should add two numbers for the sum. "
+
+
 ## Assertions
 
 It also has two additional Test::Unit assertions for working with Ruby's Array:
