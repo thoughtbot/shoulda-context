@@ -172,10 +172,17 @@ class ::Some
   class NestedModel; end
 end
 
-
 class Some::NestedModelTest < Test::Unit::TestCase
   should "determine the described type for a nested model" do
     assert_equal Some::NestedModel, self.class.described_type
+  end
+end
+
+class Some::SomeTest < Test::Unit::TestCase
+  should "not fallback to higher-level constants with same name" do
+    assert_raises(NameError) do
+      assert_equal nil, self.class.described_type
+    end
   end
 end
 

@@ -210,7 +210,9 @@ module Shoulda
         @described_type ||= self.name.
           gsub(/Test$/, '').
           split('::').
-          inject(Object) { |parent, local_name| parent.const_get(local_name) }
+          inject(Object) do |parent, local_name|
+            parent.const_get(local_name, false)
+          end
       end
 
       # Sets the return value of the subject instance method:
