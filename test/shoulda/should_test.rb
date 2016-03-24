@@ -329,11 +329,17 @@ class ShouldTest < PARENT_TEST_CASE
     name
   end
 
-  def build_expected_test_name(name)
+  def build_expected_test_name(value)
     if TEST_FRAMEWORK == "minitest"
-      "test_: #{name}"
+      if value.is_a?(Regexp)
+        Regexp.new("^test_: #{value.source}")
+      else
+        "test_: #{value}"
+      end
+    elsif value.is_a?(Regexp)
+      Regexp.new("^test: #{value.source}")
     else
-      "test: #{name}"
+      "test: #{value}"
     end
   end
 
@@ -341,5 +347,84 @@ class ShouldTest < PARENT_TEST_CASE
   # see here: <http://www.zenspider.com/ruby/2012/01/assert_nothing_tested.html>
   def assert_nothing_raised
     yield
+  end
+end
+
+class RedTestarossaDriver; end
+
+class RedTestarossaDriverTest < PARENT_TEST_CASE
+  class DummyMatcher
+    def description
+      "fail to construct the proper test name with a 'should_not'"
+    end
+
+    def matches?(*)
+      false
+    end
+
+    def failure_message_when_negated
+      "dummy failure message"
+    end
+  end
+
+  should "call Shoulda::Context::Context.new using the correct context name" do
+    assert_equal "RedTestarossaDriver", @shoulda_context.name
+  end
+
+  should "see the name of the test case class as RedTestarossaDriverTest" do
+    assert_equal "RedTestarossaDriverTest", self.class.name
+  end
+
+  should "include the correct context name in the full name of the test" do
+    assert_match(
+      build_expected_test_name(/RedTestarossaDriver/),
+      test_name
+    )
+  end
+
+  def test_should_property_construct_test_name_for_should_eventually
+    context = Shoulda::Context::Context.new("whatever", self.class) do
+      "this is just a placeholder"
+    end
+
+    Shoulda::Context::Context.
+      expects(:new).
+      with("RedTestarossaDriver", RedTestarossaDriverTest).
+      returns(context)
+
+    self.class.should_eventually("do something") {}
+  end
+
+  def test_should_property_construct_test_name_for_should_not
+    context = Shoulda::Context::Context.new("whatever", self.class) do
+      "this is just a placeholder"
+    end
+
+    Shoulda::Context::Context.
+      expects(:new).
+      with("RedTestarossaDriver", RedTestarossaDriverTest).
+      returns(context)
+
+    self.class.should_not(DummyMatcher.new)
+  end
+
+  private
+
+  def test_name
+    name
+  end
+
+  def build_expected_test_name(value)
+    if TEST_FRAMEWORK == "minitest"
+      if value.is_a?(Regexp)
+        Regexp.new("^test_: #{value.source}")
+      else
+        "test_: #{value}"
+      end
+    elsif value.is_a?(Regexp)
+      Regexp.new("^test: #{value.source}")
+    else
+      "test: #{value}"
+    end
   end
 end
