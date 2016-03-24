@@ -289,3 +289,66 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   end
 
 end
+
+class RedTestarossaDriver
+end
+
+class RedTestarossaDriverTest < Test::Unit::TestCase # :nodoc:
+  class DummyMatcher
+    def self.description
+      "fail to construct the proper test name with a 'should_not'"
+    end
+
+    def self.matches?(*)
+      false
+    end
+
+    def self.negative_failure_message
+      "dummy failure message"
+    end
+  end
+
+  setup do
+    # Testing should_eventually is a little tricky because the code inside the
+    # block doesn't actually get executed.  So instead, we'll check that the
+    # following line in Shoulda::Context.should_eventually gets called
+    # with the proper value for context_name:
+    # context = Shoulda::Context::Context.new(context_name, self) do ...
+    #
+    # Testing should_not is also a little difficult since it doesn't take a
+    # block, but we can check it the same way as for should_eventually, hence
+    # the 'twice' in the below expectation.
+    Shoulda::Context::Context.expects(:new).
+      twice.
+      with("RedTestarossaDriver", RedTestarossaDriverTest)
+  end
+
+  should "see the name of my class as RedTestarossaDriverTest" do
+    assert_equal "RedTestarossaDriverTest", self.class.name
+  end
+
+  should "properly construct the test name with a 'should'" do
+    test_name_regex = /^test: RedTestarossaDriver/
+    assert_match test_name_regex, to_s
+  end
+
+  begin
+    should_eventually(
+      "properly construct the test name with a 'should_eventually'",
+    )
+  rescue
+    # without this rescue, the expectation above causes an error to be thrown
+    # when running the test:
+    # context.rb:139:in `should_eventually':
+    # undefined method `build' for nil:NilClass (NoMethodError)
+  end
+
+  begin
+    should_not DummyMatcher
+  rescue
+    # without this rescue, the expectation above causes an error to be thrown
+    # when running the test:
+    # context.rb:99:in `should_not':
+    # undefined method `build' for nil:NilClass (NoMethodError)
+  end
+end

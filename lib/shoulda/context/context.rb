@@ -73,7 +73,7 @@ module Shoulda
         if Shoulda::Context.current_context
           Shoulda::Context.current_context.should(name_or_matcher, options, &blk)
         else
-          context_name = self.name.gsub(/Test/, "") if self.name
+          context_name = self.name.gsub(/Test$/, "") if name
           context = Shoulda::Context::Context.new(context_name, self) do
             should(name_or_matcher, options, &blk)
           end
@@ -92,7 +92,7 @@ module Shoulda
         if Shoulda::Context.current_context
           Shoulda::Context.current_context.should_not(matcher)
         else
-          context_name = self.name.gsub(/Test/, "") if self.name
+          context_name = self.name.gsub(/Test$/, "") if name
           context = Shoulda::Context::Context.new(context_name, self) do
             should_not(matcher)
           end
@@ -132,7 +132,7 @@ module Shoulda
 
       # Just like should, but never runs, and instead prints an 'X' in the Test::Unit output.
       def should_eventually(name, options = {}, &blk)
-        context_name = self.name.gsub(/Test/, "")
+        context_name = self.name.gsub(/Test$/, "")
         context = Shoulda::Context::Context.new(context_name, self) do
           should_eventually(name, &blk)
         end
