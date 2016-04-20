@@ -396,9 +396,10 @@ module Shoulda
         end
 
         test_methods[test_unit_class][test_name.to_s] = true
-
+        source_location = should[:block].source_location
         context = self
-        test_unit_class.send(:define_method, test_name) do
+        test_unit_class.class_eval <<-end_eval, source_location[0], source_location[1]  
+          define_method test_name do
           @shoulda_context = context
           begin
             context.run_parent_setup_blocks(self)
@@ -406,7 +407,6 @@ module Shoulda
               if self.respond_to?(:instance_exec)
                 self.instance_exec(&should[:before])
               else
-                # deprecated in Rails 4.x
                 should[:before].bind(self).call
               end
             end
@@ -414,13 +414,13 @@ module Shoulda
             if self.respond_to?(:instance_exec)
               self.instance_exec(&should[:block])
             else
-              # deprecated in Rails 4.x
               should[:block].bind(self).call
             end
           ensure
             context.run_all_teardown_blocks(self)
           end
-        end
+          end
+        end_eval
       end
 
       def run_all_setup_blocks(binding)
@@ -481,7 +481,7 @@ module Shoulda
       end
 
       def method_missing(method, *args, &blk)
-        test_unit_class.send(method, *args, &blk)
+        created_method = test_unit_class.send(method, *args, &blk)
       end
     end
   end
