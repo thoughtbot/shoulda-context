@@ -396,9 +396,9 @@ module Shoulda
         end
 
         test_methods[test_unit_class][test_name.to_s] = true
-        source_location = should[:block].source_location
+        file, line_no = should[:block].source_location
         context = self
-        test_unit_class.class_eval <<-end_eval, source_location[0], source_location[1]  
+        test_unit_class.class_eval <<-end_eval, file, line_no
           define_method test_name do
           @shoulda_context = context
           begin
@@ -481,7 +481,7 @@ module Shoulda
       end
 
       def method_missing(method, *args, &blk)
-        created_method = test_unit_class.send(method, *args, &blk)
+        test_unit_class.send(method, *args, &blk)
       end
     end
   end
