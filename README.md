@@ -13,21 +13,25 @@ about using shoulda with Rails or RSpec.
 Instead of writing Ruby methods with `lots_of_underscores`, shoulda-context adds
 context, setup, and should blocks...
 
-    class CalculatorTest < Test::Unit::TestCase
-      context "a calculator" do
-        setup do
-          @calculator = Calculator.new
-        end
+```ruby
+require "test/unit"
 
-        should "add two numbers for the sum" do
-          assert_equal 4, @calculator.sum(2, 2)
-        end
-
-        should "multiply two numbers for the product" do
-          assert_equal 10, @calculator.product(2, 5)
-        end
-      end
+class CalculatorTest < Test::Unit::TestCase
+  context "a calculator" do
+    setup do
+      @calculator = Calculator.new
     end
+
+    should "add two numbers for the sum" do
+      assert_equal 4, @calculator.sum(2, 2)
+    end
+
+    should "multiply two numbers for the product" do
+      assert_equal 10, @calculator.product(2, 5)
+    end
+  end
+end
+```
 
 ... which combine to produce the following test methods:
 
@@ -59,5 +63,5 @@ Thank you to all the [contributors](https://github.com/thoughtbot/shoulda-contex
 
 ## License
 
-Shoulda is Copyright © 2006-2013 thoughtbot, inc.
+Shoulda is Copyright © 2006-2016 thoughtbot, inc.
 It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
