@@ -188,8 +188,13 @@ end
 
 class ShouldMatcherTest < Test::Unit::TestCase
   class FakeMatcher
-    attr_reader :subject
+    attr_reader :subject, :called_before, :called_before_matches
     attr_accessor :fail
+
+    def before
+      @called_before = true
+      @called_before_matches = @subject.nil?
+    end
 
     def description
       "do something"
@@ -264,6 +269,12 @@ class ShouldMatcherTest < Test::Unit::TestCase
       run_test_suite
       assert_equal 'a subject', @matcher.subject
     end
+    
+    should "call before method before providing the subject" do
+      run_test
+      assert @matcher.called_before
+      assert @matcher.called_before_matches
+    end
   end
 
   def self.should_use_negative_matcher
@@ -287,6 +298,12 @@ class ShouldMatcherTest < Test::Unit::TestCase
       @matcher.fail = false
       run_test_suite
       assert_equal 'a subject', @matcher.subject
+    end
+    
+    should "call before method before providing the subject" do
+      run_test
+      assert @matcher.called_before
+      assert @matcher.called_before_matches
     end
   end
 
