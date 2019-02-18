@@ -473,7 +473,7 @@ module Shoulda
       end
 
       def test_name_prefix
-        if defined?(Minitest) || defined?(MiniTest)
+        if defined?(Minitest)
           'test_:'
         else
           'test:'

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AutoloadMacroTest < Test::Unit::TestCase # :nodoc:
+class AutoloadMacroTest < PARENT_TEST_CASE
   context "The macro auto-loader" do
     should "load macros from the plugins" do
       assert self.class.respond_to?('plugin_macro')

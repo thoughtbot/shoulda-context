@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShouldTest < Test::Unit::TestCase # :nodoc:
+class ShouldTest < PARENT_TEST_CASE
   should "be able to define a should statement outside of a context" do
     assert true
   end
@@ -19,7 +19,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     should "be able to setup a should eventually in a class method"
   end
 
-  def self.should_see_a_context_block_like_a_Test_Unit_class
+  def self.should_see_a_context_block_like_a_test_case_class
     should "see a context block as a Test::Unit class" do
       assert_equal "ShouldTest", self.class.name
     end
@@ -40,14 +40,22 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   def self.should_be_able_to_make_context_macros(prefix = nil)
     context "a macro" do
       should "have the tests named correctly" do
-        assert_match(/^test: #{prefix}a macro should have the tests named correctly/, self.to_s)
+        assert_match(
+          Regexp.new(
+            "^" +
+            build_expected_test_name(
+              "#{prefix}a macro should have the tests named correctly"
+            )
+          ),
+          test_name
+        )
       end
     end
   end
 
   context "Context" do
     should_see_class_methods
-    should_see_a_context_block_like_a_Test_Unit_class
+    should_see_a_context_block_like_a_test_case_class
     should_be_able_to_make_context_macros("Context ")
     should_be_able_to_setup_a_should_eventually_in_a_class_method
 
@@ -81,7 +89,13 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     should_see_blah
 
     should "have name set right" do
-      assert_match(/^test: Context with setup block/, self.to_s)
+      assert_match(
+        Regexp.new(
+          "^" +
+          build_expected_test_name("Context with setup block")
+        ),
+        test_name
+      )
     end
 
     context "and a subcontext" do
@@ -90,7 +104,15 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
       end
 
       should "be named correctly" do
-        assert_match(/^test: Context with setup block and a subcontext should be named correctly/, self.to_s)
+        assert_match(
+          Regexp.new(
+            "^" +
+            build_expected_test_name(
+              "Context with setup block and a subcontext should be named correctly"
+            )
+          ),
+          test_name
+        )
       end
 
       should "run the setup methods in order" do
@@ -110,7 +132,13 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "have name set right" do
-      assert_match(/^test: Another context with setup block/, self.to_s)
+      assert_match(
+        Regexp.new(
+          "^" +
+          build_expected_test_name("Another context with setup block")
+        ),
+        test_name
+      )
     end
     should_see_blah
   end
@@ -123,14 +151,14 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
 
   def test_should_create_a_new_context
     assert_nothing_raised do
-      Shoulda::Context::Context.new("context name", self) do; end
+      Shoulda::Context::Context.new("context name", self.class) do; end
     end
   end
 
   def test_should_create_a_new_context_even_if_block_is_omitted
     old_verbose, $VERBOSE = $VERBOSE, nil
     assert_nothing_raised do
-      Shoulda::Context::Context.new("context without a block", self)
+      Shoulda::Context::Context.new("context without a block", self.class)
     end
   ensure
     $VERBOSE = old_verbose
@@ -138,14 +166,14 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
 
   def test_should_create_a_nested_context
     assert_nothing_raised do
-      parent = Shoulda::Context::Context.new("Parent", self) do; end
+      parent = Shoulda::Context::Context.new("Parent", self.class) do; end
       child  = Shoulda::Context::Context.new("Child", parent) do; end
       raise unless child.instance_of? Shoulda::Context::Context
     end
   end
 
   def test_should_name_a_contexts_correctly
-    parent     = Shoulda::Context::Context.new("Parent", self) do; end
+    parent     = Shoulda::Context::Context.new("Parent", self.class) do; end
     child      = Shoulda::Context::Context.new("Child", parent) do; end
     grandchild = Shoulda::Context::Context.new("GrandChild", child) do; end
 
@@ -155,12 +183,11 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   end
 
   def test_should_raise_on_duplicate_naming
-  tu_class = Test::Unit::TestCase
-   context = Shoulda::Context::Context.new("DupContext", tu_class) do
+    context = Shoulda::Context::Context.new("DupContext", self.class) do
       should "dup" do; end
       should "dup" do; end
     end
-    assert_raise DuplicateTestError do
+    assert_raises DuplicateTestError do
       context.build
     end
   end
@@ -168,7 +195,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   # Should statements
 
   def test_should_have_should_hashes_when_given_should_statements
-    context = Shoulda::Context::Context.new("name", self) do
+    context = Shoulda::Context::Context.new("name", self.class) do
       should "be good" do; end
       should "another" do; end
     end
@@ -180,7 +207,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   # setup and teardown
 
   def test_should_capture_setup_and_teardown_blocks
-    context = Shoulda::Context::Context.new("name", self) do
+    context = Shoulda::Context::Context.new("name", self.class) do
       setup    do; "setup";    end
       teardown do; "teardown"; end
     end
@@ -192,7 +219,7 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   # building
 
   def test_should_create_shoulda_test_for_each_should_on_build
-    context = Shoulda::Context::Context.new("name", self) do
+    context = Shoulda::Context::Context.new("name", self.class) do
       should "one" do; end
       should "two" do; end
     end
@@ -202,44 +229,54 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
   end
 
   def test_should_create_test_methods_on_build
-    tu_class = Test::Unit::TestCase
+    tu_class = self.class
     context = Shoulda::Context::Context.new("A Context", tu_class) do
       should "define the test" do; end
     end
 
-    tu_class.expects(:define_method).with(:"test: A Context should define the test. ")
+    tu_class.
+      expects(:define_method).
+      with(
+        build_expected_test_name("A Context should define the test. ").to_sym
+      )
     context.build
   end
 
   def test_should_create_test_methods_on_build_when_subcontext
-    tu_class = Test::Unit::TestCase
+    tu_class = self.class
     context = Shoulda::Context::Context.new("A Context", tu_class) do
       context "with a child" do
         should "define the test" do; end
       end
     end
 
-    tu_class.expects(:define_method).with(:"test: A Context with a child should define the test. ")
+    tu_class.
+      expects(:define_method).
+      with(
+        build_expected_test_name(
+          "A Context with a child should define the test. "
+        ).to_sym
+      )
     context.build
   end
 
   # Test::Unit integration
 
-  def test_should_create_a_new_context_and_build_it_on_Test_Unit_context
+  def test_should_create_a_new_context_and_build_it_on_test_case_context
     c = mock("context")
     c.expects(:build)
     Shoulda::Context::Context.expects(:new).with("foo", kind_of(Class)).returns(c)
     self.class.context "foo" do; end
   end
 
-  def test_should_create_a_one_off_context_and_build_it_on_Test_Unit_should
+  def test_should_create_a_one_off_context_and_build_it_on_test_case_should
     s = mock("test")
     Shoulda::Context::Context.any_instance.expects(:should).with("rock", {}).returns(s)
     Shoulda::Context::Context.any_instance.expects(:build)
     self.class.should "rock" do; end
   end
 
-  def test_should_create_a_one_off_context_and_build_it_on_Test_Unit_should_eventually
+  def test_should_create_a_one_off_context_and_build_it_on_test_case_should_eventually
     s = mock("test")
     Shoulda::Context::Context.any_instance.expects(:should_eventually).with("rock").returns(s)
     Shoulda::Context::Context.any_instance.expects(:build)
@@ -288,4 +325,21 @@ class ShouldTest < Test::Unit::TestCase # :nodoc:
     end
   end
 
+  def test_name
+    name
+  end
+
+  def build_expected_test_name(name)
+    if TEST_FRAMEWORK == "minitest"
+      "test_: #{name}"
+    else
+      "test: #{name}"
+    end
+  end
+
+  # Minitest removed assert_nothing_raised a while back;
+  # see here: <http://www.zenspider.com/ruby/2012/01/assert_nothing_tested.html>
+  def assert_nothing_raised
+    yield
+  end
 end

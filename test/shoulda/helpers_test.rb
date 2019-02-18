@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class HelpersTest < Test::Unit::TestCase # :nodoc:
-
+class HelpersTest < PARENT_TEST_CASE
   context "an array of values" do
     setup do
       @a = ['abc', 'def', 3]
@@ -9,7 +8,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
 
     [/b/, 'abc', 3].each do |x|
       should "contain #{x.inspect}" do
-        assert_raises(Test::Unit::AssertionFailedError) do
+        assert_raises(ASSERTION_CLASS) do
           assert_does_not_contain @a, x
         end
         assert_contains @a, x
@@ -17,17 +16,17 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "not contain 'wtf'" do
-      assert_raises(Test::Unit::AssertionFailedError) {assert_contains @a, 'wtf'}
+      assert_raises(ASSERTION_CLASS) {assert_contains @a, 'wtf'}
       assert_does_not_contain @a, 'wtf'
     end
 
     should "be the same as another array, ordered differently" do
       assert_same_elements(@a, [3, "def", "abc"])
-      assert_raises(Test::Unit::AssertionFailedError) do
+      assert_raises(ASSERTION_CLASS) do
         assert_same_elements(@a, [3, 3, "def", "abc"])
       end
       assert_same_elements([@a, "abc"].flatten, ["abc", 3, "def", "abc"])
-      assert_raises(Test::Unit::AssertionFailedError) do
+      assert_raises(ASSERTION_CLASS) do
         assert_same_elements([@a, "abc"].flatten, [3, 3, "def", "abc"])
       end
     end
@@ -41,9 +40,12 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
 
   context "a matching matcher" do
     setup do
-      @matcher = stub('matcher', :matches?                       => true,
-                                 :failure_message_for_should     => 'bad failure message',
-                                 :failure_message_for_should_not => 'big time failure')
+      @matcher = stub(
+        "matcher",
+        matches?: true,
+        failure_message: "bad failure message",
+        failure_message_when_negated: "big time failure"
+      )
     end
 
     should "pass when given to assert_accepts with no message expectation" do
@@ -55,7 +57,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "fail when given to assert_accepts with non-matching message" do
-      assert_raise Test::Unit::AssertionFailedError do
+      assert_raises ASSERTION_CLASS do
         assert_accepts @matcher, 'target', :message => /small time/
       end
     end
@@ -68,7 +70,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
             @matcher.stubs(:matches?).returns(false)
             @matcher.stubs(:does_not_match?).returns(true)
             assert_rejects @matcher, 'target'
-          rescue Test::Unit::AssertionFailedError => @error
+          rescue ASSERTION_CLASS => @error
           end
         end
 
@@ -82,12 +84,12 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
           @error = nil
           begin
             assert_rejects @matcher, 'target'
-          rescue Test::Unit::AssertionFailedError => @error
+          rescue ASSERTION_CLASS => @error
           end
         end
 
         should "fail" do
-          assert_not_nil @error
+          refute_nil @error
         end
 
         should "use the error message from the matcher" do
@@ -99,9 +101,12 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
 
   context "a non-matching matcher" do
     setup do
-      @matcher = stub('matcher', :matches?                       => false,
-                                 :failure_message_for_should     => 'big time failure',
-                                 :failure_message_for_should_not => 'bad failure message')
+      @matcher = stub(
+        "matcher",
+        matches?: false,
+        failure_message: "big time failure",
+        failure_message_when_negated: "bad failure message"
+      )
     end
 
     should "pass when given to assert_rejects with no message expectation" do
@@ -113,7 +118,7 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "fail when given to assert_rejects with a non-matching message" do
-      assert_raise Test::Unit::AssertionFailedError do
+      assert_raises ASSERTION_CLASS do
         assert_rejects @matcher, 'target', :message => /small time/
       end
     end
@@ -122,52 +127,12 @@ class HelpersTest < Test::Unit::TestCase # :nodoc:
       setup do
         begin
           assert_accepts @matcher, 'target'
-        rescue Test::Unit::AssertionFailedError => @error
+        rescue ASSERTION_CLASS => @error
         end
       end
 
       should "fail" do
-        assert_not_nil @error
-      end
-
-      should "use the error message from the matcher" do
-        assert_equal 'big time failure', @error.message
-      end
-    end
-  end
-
-
-  context "a matcher using antiquated syntax" do
-    setup do
-      @matcher = stub('matcher', :matches?                 => false,
-                                 :failure_message          => 'big time failure',
-                                 :negative_failure_message => 'bad failure message')
-    end
-
-    should "pass when given to assert_rejects with no message expectation" do
-      assert_rejects @matcher, 'target'
-    end
-
-    should "pass when given to assert_rejects with a matching message" do
-      assert_rejects @matcher, 'target', :message => /big time/
-    end
-
-    should "fail when given to assert_rejects with a non-matching message" do
-      assert_raise Test::Unit::AssertionFailedError do
-        assert_rejects @matcher, 'target', :message => /small time/
-      end
-    end
-
-    context "when given to assert_accepts" do
-      setup do
-        begin
-          assert_accepts @matcher, 'target'
-        rescue Test::Unit::AssertionFailedError => @error
-        end
-      end
-
-      should "fail" do
-        assert_not_nil @error
+        refute_nil @error
       end
 
       should "use the error message from the matcher" do

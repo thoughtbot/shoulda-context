@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class ContextTest < Test::Unit::TestCase # :nodoc:
-
+class ContextTest < PARENT_TEST_CASE
   def self.context_macro(&blk)
     context "with a subcontext made by a macro" do
       setup { @context_macro = :foo }
@@ -20,7 +19,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "have name set right" do
-      assert_match(/^test: context with setup block/, self.to_s)
+      assert_match(/^test: context with setup block/, normalized_name)
     end
 
     context "and a subcontext" do
@@ -29,7 +28,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
       end
 
       should "be named correctly" do
-        assert_match(/^test: context with setup block and a subcontext should be named correctly/, self.to_s)
+        assert_match(/^test: context with setup block and a subcontext should be named correctly/, normalized_name)
       end
 
       should "run the setup blocks in order" do
@@ -39,7 +38,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
 
     context_macro do
       should "have name set right" do
-        assert_match(/^test: context with setup block with a subcontext made by a macro should have name set right/, self.to_s)
+        assert_match(/^test: context with setup block with a subcontext made by a macro should have name set right/, normalized_name)
       end
 
       should "run the setup block of that context macro" do
@@ -63,7 +62,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "have name set right" do
-      assert_match(/^test: another context with setup block/, self.to_s)
+      assert_match(/^test: another context with setup block/, normalized_name)
     end
   end
 
@@ -77,7 +76,7 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     end
 
     should "have name set right" do
-      assert_match(/^test: context with method definition/, self.to_s)
+      assert_match(/^test: context with method definition/, normalized_name)
     end
   end
 
@@ -166,19 +165,22 @@ class ContextTest < Test::Unit::TestCase # :nodoc:
     end
   end
 
+  def normalized_name
+    name.sub("test_:", "test:")
+  end
 end
 
 class ::Some
   class NestedModel; end
 end
 
-class Some::NestedModelTest < Test::Unit::TestCase
+class Some::NestedModelTest < PARENT_TEST_CASE
   should "determine the described type for a nested model" do
     assert_equal Some::NestedModel, self.class.described_type
   end
 end
 
-class Some::SomeTest < Test::Unit::TestCase
+class Some::SomeTest < PARENT_TEST_CASE
   should "not fallback to higher-level constants with same name" do
     assert_raises(NameError) do
       assert_equal nil, self.class.described_type
@@ -186,13 +188,13 @@ class Some::SomeTest < Test::Unit::TestCase
   end
 end
 
-class ShouldMatcherTest < Test::Unit::TestCase
+class ShouldMatcherTest < PARENT_TEST_CASE
   class FakeMatcher
     attr_reader :subject
     attr_accessor :fail
 
     def description
-      "do something"
+      "be a fake matcher"
     end
 
     def matches?(subject)
@@ -200,46 +202,33 @@ class ShouldMatcherTest < Test::Unit::TestCase
       !@fail
     end
 
-    def failure_message_for_should
-      "failure message for should"
+    def failure_message
+      "positive failure message"
     end
 
-    def failure_message_for_should_not
-      "failure message for should not"
+    def failure_message_when_negated
+      "negative failure message"
     end
-  end
-
-  def run_test_suite
-    @test_suite.run(@test_result) { |event, name| }
   end
 
   def setup
     @matcher = FakeMatcher.new
-    @test_result = Test::Unit::TestResult.new
-    class << @test_result
-      def failure_messages
-        @failures.map { |failure| failure.message }
-      end
-    end
   end
 
-  def create_test_suite(&definition)
-    test_class = Class.new(Test::Unit::TestCase, &definition)
-    test_class.suite
+  def assert_failed_with(message, test_suite)
+    assert_equal [message], test_suite.failure_messages
   end
 
-  def assert_failed_with(message, test_result)
-    assert_equal 1, test_result.failure_count
-    assert_equal [message], test_result.failure_messages
-  end
-
-  def assert_passed(test_result)
-    assert_equal 0, test_result.failure_count
+  def assert_passed(test_suite)
+    assert_equal [], test_suite.failure_messages
   end
 
   def assert_test_named(expected_name, test_suite)
-    name = test_suite.tests.map { |test| test.method_name }.first
-    assert name.include?(expected_name), "Expected #{name} to include #{expected_name}"
+    name = test_suite.test_names.first
+    assert(
+      name.include?(expected_name),
+      "Expected #{name} to include #{expected_name}"
+    )
   end
 
   def self.should_use_positive_matcher
@@ -249,19 +238,19 @@ class ShouldMatcherTest < Test::Unit::TestCase
 
     should "pass with a passing matcher" do
       @matcher.fail = false
-      run_test_suite
-      assert_passed @test_result
+      @test_suite.run
+      assert_passed @test_suite
     end
 
     should "fail with a failing matcher" do
       @matcher.fail = true
-      run_test_suite
-      assert_failed_with "failure message for should", @test_result
+      @test_suite.run
+      assert_failed_with "positive failure message", @test_suite
     end
 
     should "provide the subject" do
       @matcher.fail = false
-      run_test_suite
+      @test_suite.run
       assert_equal 'a subject', @matcher.subject
     end
   end
@@ -273,19 +262,19 @@ class ShouldMatcherTest < Test::Unit::TestCase
 
     should "pass with a failing matcher" do
       @matcher.fail = true
-      run_test_suite
-      assert_passed @test_result
+      @test_suite.run
+      assert_passed @test_suite
     end
 
     should "fail with a passing matcher" do
       @matcher.fail = false
-      run_test_suite
-      assert_failed_with "failure message for should not", @test_result
+      @test_suite.run
+      assert_failed_with "negative failure message", @test_suite
     end
 
     should "provide the subject" do
       @matcher.fail = false
-      run_test_suite
+      @test_suite.run
       assert_equal 'a subject', @matcher.subject
     end
   end
@@ -293,7 +282,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
   context "a should block with a matcher" do
     setup do
       matcher = @matcher
-      @test_suite = create_test_suite do
+      @test_suite = TestSuite.create do
         subject { 'a subject' }
         should matcher
       end
@@ -305,7 +294,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
   context "a should block with a matcher within a context" do
     setup do
       matcher = @matcher
-      @test_suite = create_test_suite do
+      @test_suite = TestSuite.create do
         context "in context" do
           subject { 'a subject' }
           should matcher
@@ -319,7 +308,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
   context "a should_not block with a matcher" do
     setup do
       matcher = @matcher
-      @test_suite = create_test_suite do
+      @test_suite = TestSuite.create do
         subject { 'a subject' }
         should_not matcher
       end
@@ -331,7 +320,7 @@ class ShouldMatcherTest < Test::Unit::TestCase
   context "a should_not block with a matcher within a context" do
     setup do
       matcher = @matcher
-      @test_suite = create_test_suite do
+      @test_suite = TestSuite.create do
         context "in context" do
           subject { 'a subject' }
           should_not matcher
@@ -341,11 +330,61 @@ class ShouldMatcherTest < Test::Unit::TestCase
 
     should_use_negative_matcher
   end
+
+  class TestSuite
+    def self.create(&definition)
+      if defined?(Test::Unit)
+        TestUnitSuite.new(&definition)
+      else
+        MinitestSuite.new(&definition)
+      end
+    end
+  end
+
+  class TestUnitSuite
+    def initialize(&definition)
+      @suite = Class.new(Test::Unit::TestCase, &definition).suite
+      @result = Test::Unit::TestResult.new
+    end
+
+    def run
+      @suite.run(@result) do |event, name|
+        # do nothing
+      end
+    end
+
+    def failure_messages
+      @result.failures.map(&:message)
+    end
+
+    def test_names
+      @suite.tests.map(&:method_name)
+    end
+  end
+
+  class MinitestSuite
+    def initialize(&definition)
+      @test_case_class = Class.new(Minitest::Test, &definition)
+      @reporter = Minitest::StatisticsReporter.new(StringIO.new)
+    end
+
+    def run
+      @test_case_class.run(@reporter)
+    end
+
+    def failure_messages
+      @reporter.results.flat_map(&:failures).map(&:message)
+    end
+
+    def test_names
+      @test_case_class.runnable_methods
+    end
+  end
 end
 
 class Subject; end
 
-class SubjectTest < Test::Unit::TestCase
+class SubjectTest < PARENT_TEST_CASE
 
   def setup
     @expected = Subject.new
@@ -358,7 +397,7 @@ class SubjectTest < Test::Unit::TestCase
   end
 end
 
-class SubjectLazinessTest < Test::Unit::TestCase
+class SubjectLazinessTest < PARENT_TEST_CASE
   subject { Subject.new }
 
   should "only build the subject once" do

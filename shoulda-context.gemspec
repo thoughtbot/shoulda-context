@@ -17,14 +17,9 @@ Gem::Specification.new do |s|
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables      = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
+  s.bindir           = 'exe'
   s.require_paths    = ["lib"]
 
-  s.add_development_dependency("appraisal", "~> 0.5")
-  s.add_development_dependency("rails", ">= 3.0")
-  s.add_development_dependency("mocha", "~> 0.9.10")
-  s.add_development_dependency("rake")
-  s.add_development_dependency("test-unit", "~> 2.1.0")
-  s.add_development_dependency("pry")
-  s.add_development_dependency("byebug")
-  s.add_development_dependency("pry-byebug")
+  s.add_development_dependency "appraisal"
+  s.add_development_dependency "bundler", "~> 1.0"
 end

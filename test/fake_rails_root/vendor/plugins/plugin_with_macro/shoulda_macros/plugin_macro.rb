@@ -2,5 +2,4 @@ module PluginMacro
   def plugin_macro
   end
 end
-Test::Unit::TestCase.extend(PluginMacro)
-
+PARENT_TEST_CASE.extend(PluginMacro)

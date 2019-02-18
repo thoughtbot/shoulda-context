@@ -1,9 +1,8 @@
-require 'test/unit'
+require 'test_helper'
 
-class ConvertToShouldSyntaxTest < Test::Unit::TestCase # :nodoc:
-
+class ConvertToShouldSyntaxTest < PARENT_TEST_CASE
   BEFORE_FIXTURE = <<-EOS
-    class DummyTest < Test::Unit::TestCase
+    class DummyTest < #{PARENT_TEST_CASE}
 
       should "Not change this_word_with_underscores" do
       end
@@ -23,7 +22,7 @@ class ConvertToShouldSyntaxTest < Test::Unit::TestCase # :nodoc:
   EOS
 
   AFTER_FIXTURE = <<-EOS
-    class DummyTest < Test::Unit::TestCase
+    class DummyTest < #{PARENT_TEST_CASE}
 
       should "Not change this_word_with_underscores" do
       end
@@ -48,7 +47,7 @@ class ConvertToShouldSyntaxTest < Test::Unit::TestCase # :nodoc:
 
   def test_convert_to_should_syntax
     File.open(FIXTURE_PATH, "w") {|f| f.write(BEFORE_FIXTURE)}
-    cmd = "#{RUBY} #{File.join(File.dirname(__FILE__), '../../bin/convert_to_should_syntax')} #{FIXTURE_PATH}"
+    cmd = "#{RUBY} #{File.join(File.dirname(__FILE__), '../../exe/convert_to_should_syntax')} #{FIXTURE_PATH}"
     output = `#{cmd}`
     File.unlink($1) if output.match(/has been stored in '([^']+)/)
     assert_match(/has been converted/, output)
@@ -59,5 +58,4 @@ class ConvertToShouldSyntaxTest < Test::Unit::TestCase # :nodoc:
   def teardown
     File.unlink(FIXTURE_PATH)
   end
-
 end

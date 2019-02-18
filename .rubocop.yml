@@ -1,5 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.4
+  Exclude:
+    - '*.gemspec'
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 Layout/ConditionPosition:

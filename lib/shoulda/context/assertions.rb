@@ -3,7 +3,7 @@ module Shoulda # :nodoc:
     module Assertions
       # Asserts that two arrays contain the same elements, the same number of times.  Essentially ==, but unordered.
       #
-      #   assert_same_elements([:a, :b, :c], [:c, :a, :b]) => passes
+      #   assert_same_elements([:a, :b, :c], [:c, :a, :b]) => passes)
       def assert_same_elements(a1, a2, msg = nil)
         [:select, :inject, :size].each do |m|
           [a1, a2].each {|a| assert_respond_to(a, m, "Are you sure that #{a.inspect} is an array?  It doesn't respond to #{m}.") }
@@ -45,7 +45,8 @@ module Shoulda # :nodoc:
         end
       end
 
-      # Asserts that the given matcher returns true when +target+ is passed to #matches?
+      # Asserts that the given matcher returns true when +target+ is passed to
+      # #matches?
       def assert_accepts(matcher, target, options = {})
         if matcher.respond_to?(:in_context)
           matcher.in_context(self)
@@ -54,33 +55,35 @@ module Shoulda # :nodoc:
         if matcher.matches?(target)
           safe_assert_block { true }
           if options[:message]
-            message = matcher.respond_to?(:failure_message_for_should_not) ? matcher.failure_message_for_should_not : matcher.negative_failure_message
-            assert_match options[:message], message
+            assert_match options[:message], matcher.failure_message_when_negated
           end
         else
-          message = matcher.respond_to?(:failure_message_for_should) ? matcher.failure_message_for_should : matcher.failure_message
-          safe_assert_block(message) { false }
+          safe_assert_block(matcher.failure_message) { false }
         end
       end
 
-      # Asserts that the given matcher returns true when +target+ is passed to #does_not_match?
-      # or false when +target+ is passed to #matches? if #does_not_match? is not implemented
+      # Asserts that the given matcher returns true when +target+ is passed to
+      # #does_not_match? or false when +target+ is passed to #matches? if
+      # #does_not_match? is not implemented
       def assert_rejects(matcher, target, options = {})
         if matcher.respond_to?(:in_context)
           matcher.in_context(self)
         end
 
-        not_match = matcher.respond_to?(:does_not_match?) ? matcher.does_not_match?(target) : !matcher.matches?(target)
+        not_match =
+          if matcher.respond_to?(:does_not_match?)
+            matcher.does_not_match?(target)
+          else
+            !matcher.matches?(target)
+          end
 
         if not_match
           safe_assert_block { true }
           if options[:message]
-            message = matcher.respond_to?(:failure_message_for_should) ? matcher.failure_message_for_should : matcher.failure_message
-            assert_match options[:message], message
+            assert_match options[:message], matcher.failure_message
           end
         else
-          message = matcher.respond_to?(:failure_message_for_should_not) ? matcher.failure_message_for_should_not : matcher.negative_failure_message
-          safe_assert_block(message) { false }
+          safe_assert_block(matcher.failure_message_when_negated) { false }
         end
       end
 
