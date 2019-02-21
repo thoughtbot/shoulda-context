@@ -160,6 +160,8 @@ Style/RaiseArgs:
   Enabled: false
 Style/RegexpLiteral:
   Enabled: false
+Style/RescueStandardError:
+  Enabled: false
 Style/SelfAssignment:
   Enabled: false
 Style/SignalException:
