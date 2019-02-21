@@ -389,38 +389,36 @@ module Shoulda
       end
 
       def create_test_from_should_hash(should)
-        test_name = [test_name_prefix, full_name, "should", "#{should[:name]}. "].flatten.join(' ').to_sym
+        test_name = build_test_name_from(should)
 
-        if test_methods[test_unit_class][test_name.to_s] then
+        if test_methods[test_unit_class][test_name.to_s]
           raise DuplicateTestError, "'#{test_name}' is defined more than once."
         end
-
         test_methods[test_unit_class][test_name.to_s] = true
-        file, line_no = should[:block].source_location
+
         context = self
-        test_unit_class.class_eval <<-end_eval, file, line_no
-          define_method test_name do
+        test_unit_class.__send__(:define_method, test_name) do
           @shoulda_context = context
           begin
             context.run_parent_setup_blocks(self)
             if should[:before]
-              if self.respond_to?(:instance_exec)
-                self.instance_exec(&should[:before])
-              else
-                should[:before].bind(self).call
-              end
+              instance_exec(&should[:before])
             end
             context.run_current_setup_blocks(self)
-            if self.respond_to?(:instance_exec)
-              self.instance_exec(&should[:block])
-            else
-              should[:block].bind(self).call
-            end
+            instance_exec(&should[:block])
           ensure
             context.run_all_teardown_blocks(self)
           end
-          end
-        end_eval
+        end
+      end
+
+      def build_test_name_from(should)
+        [
+          test_name_prefix,
+          full_name,
+          "should",
+          "#{should[:name]}. "
+        ].flatten.join(' ').to_sym
       end
 
       def run_all_setup_blocks(binding)
