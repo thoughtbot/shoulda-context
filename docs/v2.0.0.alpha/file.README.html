@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+  
+    <span class="title">README</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><div id='filecontents'><h1>Shoulda Context <a href="https://rubygems.org/gems/shoulda-context"><img src="https://img.shields.io/gem/v/shoulda-context.svg" alt="Gem Version"></a> <a href="https://travis-ci.org/thoughtbot/shoulda-context"><img src="https://img.shields.io/travis/thoughtbot/shoulda-context/master.svg" alt="Build Status"></a> <img src="https://img.shields.io/gem/dtv/shoulda-context.svg" alt="Downloads"> <a href="https://houndci.com"><img src="https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg" alt="Hound"></a></h1>
+
+<p>Shoulda Context makes it easy to write understandable and maintainable tests
+under Minitest and Test::Unit within Rails projects or plain Ruby projects. It&#39;s
+fully compatible with your existing tests and requires no retooling to use.</p>
+
+<p><strong><a href="http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames">View the documentation for the latest version (1.2.2)</a> • <a href="CHANGELOG.md">View
+the changelog</a></strong></p>
+
+<hr>
+
+<h2>Usage</h2>
+
+<p>Instead of writing Ruby methods with <code>lots_of_underscores</code>, Shoulda Context lets
+you name your tests and group them together using English.</p>
+
+<p>At a minimum, the gem provides some convenience layers around core Minitest
+functionality. For instance, this test case:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">CalculatorTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">context</span> <span class="s2">&quot;a calculator&quot;</span> <span class="k">do</span>
+    <span class="n">setup</span> <span class="k">do</span>
+      <span class="vi">@calculator</span> <span class="o">=</span> <span class="no">Calculator</span><span class="o">.</span><span class="n">new</span>
+    <span class="k">end</span>
+
+    <span class="n">should</span> <span class="s2">&quot;add two numbers for the sum&quot;</span> <span class="k">do</span>
+      <span class="n">assert_equal</span> <span class="mi">4</span><span class="p">,</span> <span class="vi">@calculator</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">should</span> <span class="s2">&quot;multiply two numbers for the product&quot;</span> <span class="k">do</span>
+      <span class="n">assert_equal</span> <span class="mi">10</span><span class="p">,</span> <span class="vi">@calculator</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>is a prettier, but functionally equivalent, way of saying:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">CalculatorTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="vi">@calculator</span> <span class="o">=</span> <span class="no">Calculator</span><span class="o">.</span><span class="n">new</span>
+  <span class="k">end</span>
+
+  <span class="n">define_method</span> <span class="s2">&quot;test_: a calculator should add two numbers for the sum&quot;</span> <span class="k">do</span>
+    <span class="n">assert_equal</span> <span class="mi">4</span><span class="p">,</span> <span class="vi">@calculator</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">define_method</span> <span class="s2">&quot;test_: a calculator should multiply two numbers for the product&quot;</span> <span class="k">do</span>
+    <span class="n">assert_equal</span> <span class="mi">10</span><span class="p">,</span> <span class="vi">@calculator</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>However, Shoulda Context also provides functionality apart from Minitest /
+Test::Unit that allows you to shorten tests drastically by making use of
+RSpec-compatible matchers. For instance, with <a href="https://github.com/thoughtbot/shoulda-matchers">Shoulda
+Matchers</a> you can write such tests as:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="n">context</span> <span class="s2">&quot;validations&quot;</span> <span class="k">do</span>
+    <span class="n">subject</span> <span class="p">{</span> <span class="no">FactoryBot</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">should</span> <span class="n">validate_presence_of</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">)</span>
+    <span class="n">should</span> <span class="n">validate_presence_of</span><span class="p">(</span><span class="ss">:last_name</span><span class="p">)</span>
+    <span class="n">should</span> <span class="n">validate_uniqueness_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+    <span class="n">should_not</span> <span class="n">allow_value</span><span class="p">(</span><span class="s1">&#39;weird&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">for</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<h2>API</h2>
+
+<h3>DSL</h3>
+
+<p>The primary method in Shoulda Context&#39;s API is <code>context</code>, which declares a group
+of a tests.</p>
+
+<p>These methods are available inside of a <code>context</code>:</p>
+
+<ul>
+<li><code>setup</code> — a DSL-y alternative to defining a <code>setup</code> method</li>
+<li><code>teardown</code> — a DSL-y alternative to defining a <code>teardown</code> method</li>
+<li><code>should</code> — There are two forms:
+
+<ol>
+<li>when passed a name + block, creates a test equivalent to defining a
+<code>test_</code> method</li>
+<li>when passed a matcher, creates a test that will run the matcher, asserting
+that it passes</li>
+</ol></li>
+<li><code>should_not</code> — like the matcher version of <code>should</code>, but creates a test that
+asserts that the matcher fails</li>
+<li><code>should_eventually</code> — allows you to temporarily skip tests</li>
+<li><code>context</code> — creates a subcontext</li>
+</ul>
+
+<p>These methods are available within a test case class, but outside of a
+<code>context</code>:</p>
+
+<ul>
+<li><code>should</code> — same as above</li>
+<li><code>should_not</code> — same as above</li>
+<li><code>should_eventually</code> — same as above</li>
+<li><code>described_type</code> — returns the class being tested, as determined by the class
+name of the outermost class</li>
+<li><code>subject</code> — lets you define an object that is the primary focus of the tests
+within a context; this is most useful when using a matcher as the matcher will
+make use of this as <em>its</em> subject</li>
+</ul>
+
+<p>And these methods are available inside of a test (whether defined via a method
+or via <code>should</code>):</p>
+
+<ul>
+<li><code>subject</code> — an instance of the class under test, which is derived
+automatically from the name of the test case class but is overridable via the
+class method version of <code>subject</code> above</li>
+</ul>
+
+<h3>Assertions</h3>
+
+<p>In addition to the main API, the gem also provides some extra assertions that
+may be of use:</p>
+
+<ul>
+<li><code>assert_same_elements</code> — compares two arrays for equality, but ignoring
+ordering</li>
+<li><code>assert_contains</code> — asserts that an array has an item</li>
+<li><code>assert_does_not_contain</code> — the opposite of <code>assert_contains</code></li>
+<li><code>assert_accepts</code> — what <code>should</code> uses internally; asserts that a matcher
+object matches against a value</li>
+<li><code>assert_reject</code> — what <code>should_not</code> uses internally; asserts that a matcher
+object does not match against a value</li>
+</ul>
+
+<h2>Note on running tests</h2>
+
+<p>Normally, you will run a single test like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="n">ruby</span> <span class="o">-</span><span class="n">I</span> <span class="n">lib</span> <span class="o">-</span><span class="n">I</span> <span class="nb">test</span> <span class="n">path_to_test</span><span class="o">.</span><span class="n">rb</span> <span class="o">-</span><span class="n">n</span> <span class="n">name_of_test_method</span>
+</code></pre>
+
+<p>When using Shoulda Context, however, you&#39;ll need to put a space after the test
+name:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="n">ruby</span> <span class="o">-</span><span class="n">I</span> <span class="n">lib</span> <span class="o">-</span><span class="n">I</span> <span class="nb">test</span> <span class="n">path_to_test</span><span class="o">.</span><span class="n">rb</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;test_: a calculator should add two numbers for the sum. &quot;</span>
+</code></pre>
+
+<p>If this is too cumbersome, consider using the <a href="https://github.com/qrush/m">m</a> gem to run tests instead:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="n">m</span> <span class="n">path_to_test</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">39</span>
+</code></pre>
+
+<h2>Compatibility</h2>
+
+<p>Shoulda Context is tested and supported against Rails 5.x, Rails 4.2, Minitest
+5, Test::Unit 3, and Ruby 2.3+.</p>
+
+<h2>Credits</h2>
+
+<p>Shoulda Context is maintained by <a href="https://github.com/travisjeffery">Travis Jeffery</a> and
+thoughtbot. Thank you to all the <a href="https://github.com/thoughtbot/shoulda-context/contributors">contributors</a>.</p>
+
+<h2>License</h2>
+
+<p>Shoulda Context is copyright © 2006-2019 <a href="https://thoughtbot.com">thoughtbot, inc</a>.
+It is free software, and may be redistributed under the terms specified in the
+<a href="MIT-LICENSE">MIT-LICENSE</a> file.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

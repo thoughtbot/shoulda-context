@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shoulda::Context::DSL::InstanceMethods
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shoulda::Context::DSL::InstanceMethods";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="../../../index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    <span class='title'><span class='object_link'><a href="../../../Shoulda.html" title="Shoulda (module)">Shoulda</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Context.html" title="Shoulda::Context (module)">Context</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../DSL.html" title="Shoulda::Context::DSL (module)">DSL</a></span></span>
+     &raquo; 
+    <span class="title">InstanceMethods</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="../../../class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../../method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../../file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><h1>Module: Shoulda::Context::DSL::InstanceMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+</dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subject-instance_method" title="#subject (instance method)">#<strong>subject</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns an instance of the class under test.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="subject-instance_method">
+  
+    #<strong>subject</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns an instance of the class under test.</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">should</span> <span class="s2">&quot;be a user&quot;</span> <span class="k">do</span>
+    <span class="n">assert_kind_of</span> <span class="no">User</span><span class="p">,</span> <span class="n">subject</span>  <span class="c1"># passes</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>The subject can be explicitly set using the <code>subject</code> class method:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span> <span class="p">}</span>
+
+  <span class="n">should</span> <span class="s2">&quot;be an existing user&quot;</span> <span class="k">do</span>
+    <span class="n">assert</span> <span class="o">!</span><span class="n">subject</span><span class="o">.</span><span class="n">new_record?</span>  <span class="c1"># uses the first user</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>The subject is used by all macros that require an instance of the
+class being tested.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+302
+303
+304</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 302</span>
+
+<span></span><span class="k">def</span> <span class="nf">subject</span>
+  <span class="vi">@shoulda_subject</span> <span class="o">||=</span> <span class="n">construct_subject</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shoulda::Context
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="../css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shoulda::Context";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="../index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    <span class='title'><span class='object_link'><a href="../Shoulda.html" title="Shoulda (module)">Shoulda</a></span></span>
+     &raquo; 
+    <span class="title">Context</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="../class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><h1>Module: Shoulda::Context
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+</dl>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Context/Assertions.html" title="Shoulda::Context::Assertions (module)">Assertions</a></span>, <span class='object_link'><a href="Context/DSL.html" title="Shoulda::Context::DSL (module)">DSL</a></span>
+    
+  
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#configure-class_method" title="configure (class method)">.<strong>configure</strong> {|_self| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Configures the gem&#39;s behavior.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extend-class_method" title="extend (class method)">.<strong>extend</strong>(mod)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Mixes a module into all top-level test case classes that Shoulda::Context thinks are present, as class methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#include-class_method" title="include (class method)">.<strong>include</strong>(mod)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Mixes a module into all top-level test case classes that Shoulda::Context thinks are present, as instance methods.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="configure-class_method">
+  
+    .<strong>configure</strong> {|_self| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Configures the gem&#39;s behavior. Place a configuration block in your test
+helper to set up Shoulda::Context for your project.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span></span><span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="no">MyHelpers</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+    
+  </div>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>_self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>_self</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Shoulda::Context (module)">Shoulda::Context</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the object that the method was called on</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#include-class_method" title="Shoulda::Context.include (method)">include</a></span></li>
+    
+      <li><span class='object_link'><a href="#extend-class_method" title="Shoulda::Context.extend (method)">extend</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+13
+14
+15</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/configuration.rb', line 13</span>
+
+<span></span><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">configure</span>
+  <span class="k">yield</span> <span class="nb">self</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extend-class_method">
+  
+    .<strong>extend</strong>(mod)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Mixes a module into all top-level test case classes that Shoulda::Context
+thinks are present, as class methods. Useful for macros (methods that
+generate test methods).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>mod</span>
+      
+      
+        <span class='type'>(<tt>Module</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/configuration.rb', line 35</span>
+
+<span></span><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">extend</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+  <span class="n">test_framework_test_cases</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">test_case</span><span class="o">|</span>
+    <span class="n">test_case</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="include-class_method">
+  
+    .<strong>include</strong>(mod)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Mixes a module into all top-level test case classes that Shoulda::Context
+thinks are present, as instance methods. Useful for assertions or other
+methods that you want to use within the context of a test.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>mod</span>
+      
+      
+        <span class='type'>(<tt>Module</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/configuration.rb', line 23</span>
+
+<span></span><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">include</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+  <span class="n">test_framework_test_cases</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">test_case</span><span class="o">|</span>
+    <span class="n">test_case</span><span class="o">.</span><span class="n">class_eval</span> <span class="p">{</span> <span class="kp">include</span> <span class="n">mod</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

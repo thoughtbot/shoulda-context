@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shoulda::Context::Assertions
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shoulda::Context::Assertions";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="../../index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    <span class='title'><span class='object_link'><a href="../../Shoulda.html" title="Shoulda (module)">Shoulda</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Context.html" title="Shoulda::Context (module)">Context</a></span></span>
+     &raquo; 
+    <span class="title">Assertions</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="../../class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><h1>Module: Shoulda::Context::Assertions
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+</dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assert_accepts-instance_method" title="#assert_accepts (instance method)">#<strong>assert_accepts</strong>(matcher, target, options = {})  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Asserts that a matcher passes (i.e. its <code>matches?</code> method returns true) when run with the <code>target</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assert_contains-instance_method" title="#assert_contains (instance method)">#<strong>assert_contains</strong>(collection, x, extra_msg = &quot;&quot;)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Asserts that a collection contains an element.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assert_does_not_contain-instance_method" title="#assert_does_not_contain (instance method)">#<strong>assert_does_not_contain</strong>(collection, x, extra_msg = &quot;&quot;)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Asserts that a collection does not contain an element.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assert_rejects-instance_method" title="#assert_rejects (instance method)">#<strong>assert_rejects</strong>(matcher, target, options = {})  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Asserts that a matcher fails (i.e. its <code>matches?</code> method returns false or its <code>does_not_match?</code> method returns true) when run with the <code>target</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assert_same_elements-instance_method" title="#assert_same_elements (instance method)">#<strong>assert_same_elements</strong>(a1, a2, msg = nil)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Asserts that two arrays contain the same elements, the same number of times.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="assert_accepts-instance_method">
+  
+    #<strong>assert_accepts</strong>(matcher, target, options = {})  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Asserts that a matcher passes (i.e. its <code>matches?</code> method returns true)
+when run with the <code>target</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>matcher</span>
+      
+      
+        <span class='type'>(<tt>#matches?</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An object that conforms to RSpec 3&#39;s matcher
+API.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>target</span>
+      
+      
+        <span class='type'>(<tt>any</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The argument that will get passed to <code>matches?</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:message</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/assertions.rb', line 91</span>
+
+<span></span><span class="k">def</span> <span class="nf">assert_accepts</span><span class="p">(</span><span class="n">matcher</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="k">if</span> <span class="n">matcher</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:in_context</span><span class="p">)</span>
+    <span class="n">matcher</span><span class="o">.</span><span class="n">in_context</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">if</span> <span class="n">matcher</span><span class="o">.</span><span class="n">matches?</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">safe_assert_block</span> <span class="p">{</span> <span class="kp">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span>
+      <span class="n">assert_match</span> <span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span><span class="p">,</span> <span class="n">matcher</span><span class="o">.</span><span class="n">failure_message_when_negated</span>
+    <span class="k">end</span>
+  <span class="k">else</span>
+    <span class="n">safe_assert_block</span><span class="p">(</span><span class="n">matcher</span><span class="o">.</span><span class="n">failure_message</span><span class="p">)</span> <span class="p">{</span> <span class="kp">false</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="assert_contains-instance_method">
+  
+    #<strong>assert_contains</strong>(collection, x, extra_msg = &quot;&quot;)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Asserts that a collection contains an element.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span></span><span class="n">assert_contains</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>          <span class="c1">#=&gt; passes</span>
+<span class="n">assert_contains</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="sr">/\d/</span><span class="p">)</span>         <span class="c1">#=&gt; passes</span>
+<span class="n">assert_contains</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="sr">/not there/</span><span class="p">)</span>  <span class="c1">#=&gt; fails</span>
+</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>collection</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Regexp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a string, ensures that the collection
+contains <code>x</code>; if a regex, ensures that at least one element from the
+collection matches <code>x</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>extra_msg</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>An optional message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Minitest::Assertion</tt>, <tt>Test::Unit::AssertionFailedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/assertions.rb', line 44</span>
+
+<span></span><span class="k">def</span> <span class="nf">assert_contains</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">extra_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">collection</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+  <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> not found in </span><span class="si">#{</span><span class="n">collection</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">extra_msg</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">case</span> <span class="n">x</span>
+  <span class="k">when</span> <span class="no">Regexp</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="n">e</span> <span class="o">=~</span> <span class="n">x</span> <span class="p">},</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="assert_does_not_contain-instance_method">
+  
+    #<strong>assert_does_not_contain</strong>(collection, x, extra_msg = &quot;&quot;)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Asserts that a collection does not contain an element.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span></span><span class="n">assert_does_not_contain</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>          <span class="c1">#=&gt; fails</span>
+<span class="n">assert_does_not_contain</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="sr">/\d/</span><span class="p">)</span>         <span class="c1">#=&gt; fails</span>
+<span class="n">assert_does_not_contain</span><span class="p">(</span><span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="o">]</span><span class="p">,</span> <span class="sr">/not there/</span><span class="p">)</span>  <span class="c1">#=&gt; passes</span>
+</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>collection</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Regexp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a string, ensures that the collection
+contains <code>x</code>; if a regex, ensures that none of the elements from the
+collection match <code>x</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>extra_msg</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>An optional message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Minitest::Assertion</tt>, <tt>Test::Unit::AssertionFailedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/assertions.rb', line 70</span>
+
+<span></span><span class="k">def</span> <span class="nf">assert_does_not_contain</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">extra_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">collection</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+  <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> found in </span><span class="si">#{</span><span class="n">collection</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span> <span class="n">extra_msg</span>
+  <span class="k">case</span> <span class="n">x</span>
+  <span class="k">when</span> <span class="no">Regexp</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">collection</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="n">e</span> <span class="o">=~</span> <span class="n">x</span> <span class="p">},</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">collection</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="assert_rejects-instance_method">
+  
+    #<strong>assert_rejects</strong>(matcher, target, options = {})  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Asserts that a matcher fails (i.e. its <code>matches?</code> method returns false
+or its <code>does_not_match?</code> method returns true) when run with the
+<code>target</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>matcher</span>
+      
+      
+        <span class='type'>(<tt>#matches?</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An object that conforms to RSpec 3&#39;s matcher
+API.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>target</span>
+      
+      
+        <span class='type'>(<tt>any</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The argument that will get passed to <code>matches?</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:message</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/assertions.rb', line 117</span>
+
+<span></span><span class="k">def</span> <span class="nf">assert_rejects</span><span class="p">(</span><span class="n">matcher</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="k">if</span> <span class="n">matcher</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:in_context</span><span class="p">)</span>
+    <span class="n">matcher</span><span class="o">.</span><span class="n">in_context</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">not_match</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="n">matcher</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:does_not_match?</span><span class="p">)</span>
+      <span class="n">matcher</span><span class="o">.</span><span class="n">does_not_match?</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="o">!</span><span class="n">matcher</span><span class="o">.</span><span class="n">matches?</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="k">end</span>
+
+  <span class="k">if</span> <span class="n">not_match</span>
+    <span class="n">safe_assert_block</span> <span class="p">{</span> <span class="kp">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span>
+      <span class="n">assert_match</span> <span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span><span class="p">,</span> <span class="n">matcher</span><span class="o">.</span><span class="n">failure_message</span>
+    <span class="k">end</span>
+  <span class="k">else</span>
+    <span class="n">safe_assert_block</span><span class="p">(</span><span class="n">matcher</span><span class="o">.</span><span class="n">failure_message_when_negated</span><span class="p">)</span> <span class="p">{</span> <span class="kp">false</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="assert_same_elements-instance_method">
+  
+    #<strong>assert_same_elements</strong>(a1, a2, msg = nil)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Asserts that two arrays contain the same elements, the same number of
+times. (Essentially <code>==</code>, but unordered.)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span></span><span class="n">assert_same_elements</span><span class="p">(</span><span class="o">[</span><span class="ss">:a</span><span class="p">,</span> <span class="ss">:b</span><span class="p">,</span> <span class="ss">:c</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:a</span><span class="p">,</span> <span class="ss">:b</span><span class="p">,</span> <span class="ss">:c</span><span class="o">]</span><span class="p">)</span>  <span class="c1">#=&gt; passes</span>
+<span class="n">assert_same_elements</span><span class="p">(</span><span class="o">[</span><span class="ss">:a</span><span class="p">,</span> <span class="ss">:b</span><span class="p">,</span> <span class="ss">:c</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:c</span><span class="p">,</span> <span class="ss">:a</span><span class="p">,</span> <span class="ss">:b</span><span class="o">]</span><span class="p">)</span>  <span class="c1">#=&gt; passes</span>
+<span class="n">assert_same_elements</span><span class="p">(</span><span class="o">[</span><span class="ss">:a</span><span class="p">,</span> <span class="ss">:b</span><span class="p">,</span> <span class="ss">:c</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="ss">:c</span><span class="p">,</span> <span class="ss">:d</span><span class="p">,</span> <span class="ss">:b</span><span class="o">]</span><span class="p">)</span>  <span class="c1">#=&gt; fails</span>
+</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>a1</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The expected array.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>a2</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The actual array.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>msg</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>An optional message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Minitest::Assertion</tt>, <tt>Test::Unit::AssertionFailedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/assertions.rb', line 18</span>
+
+<span></span><span class="k">def</span> <span class="nf">assert_same_elements</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+  <span class="o">[</span><span class="ss">:select</span><span class="p">,</span> <span class="ss">:inject</span><span class="p">,</span> <span class="ss">:size</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span>
+    <span class="o">[</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">assert_respond_to</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s2">&quot;Are you sure that </span><span class="si">#{</span><span class="n">a</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> is an array?  It doesn&#39;t respond to </span><span class="si">#{</span><span class="n">m</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">assert</span> <span class="n">a1h</span> <span class="o">=</span> <span class="n">a1</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">e</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">e</span><span class="o">]</span> <span class="o">||=</span> <span class="n">a1</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">==</span> <span class="n">e</span> <span class="p">}</span><span class="o">.</span><span class="n">size</span><span class="p">;</span> <span class="n">h</span> <span class="p">}</span>
+  <span class="n">assert</span> <span class="n">a2h</span> <span class="o">=</span> <span class="n">a2</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">e</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">e</span><span class="o">]</span> <span class="o">||=</span> <span class="n">a2</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">==</span> <span class="n">e</span> <span class="p">}</span><span class="o">.</span><span class="n">size</span><span class="p">;</span> <span class="n">h</span> <span class="p">}</span>
+
+  <span class="n">assert_equal</span><span class="p">(</span><span class="n">a1h</span><span class="p">,</span> <span class="n">a2h</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

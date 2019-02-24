@@ -1,0 +1,912 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shoulda::Context::DSL::ClassMethods
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shoulda::Context::DSL::ClassMethods";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="../../../index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    <span class='title'><span class='object_link'><a href="../../../Shoulda.html" title="Shoulda (module)">Shoulda</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Context.html" title="Shoulda::Context (module)">Context</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../DSL.html" title="Shoulda::Context::DSL (module)">DSL</a></span></span>
+     &raquo; 
+    <span class="title">ClassMethods</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="../../../class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../../method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="../../../file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><h1>Module: Shoulda::Context::DSL::ClassMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+</dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#before_should-instance_method" title="#before_should (instance method)">#<strong>before_should</strong>(name, &amp;blk)  &#x21d2; Shoulda::Context::Context </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p><code>before_should</code> statements are <code>should</code> statements that run before the current context&#39;s <code>setup</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>(name, &amp;blk)  &#x21d2; Shoulda::Context::Context </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A <code>context</code> block groups <code>should</code> statements under a common set of setup/teardown methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#described_type-instance_method" title="#described_type (instance method)">#<strong>described_type</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the class being tested, as determined by the test class name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should-instance_method" title="#should (instance method)">#<strong>should</strong>(name_or_matcher, options = {}, &amp;blk)  &#x21d2; Shoulda::Context::Context </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p><code>should</code> statements are just syntactic sugar over normal Test::Unit test methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_eventually-instance_method" title="#should_eventually (instance method)">#<strong>should_eventually</strong>(name, options = {}, &amp;blk)  &#x21d2; Shoulda::Context::Context </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Just like <code>should</code>, but never runs, instead printing an &#39;X&#39; when the test is run.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_not-instance_method" title="#should_not (instance method)">#<strong>should_not</strong>(matcher)  &#x21d2; Shoulda::Context::Context </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Allows negative tests using matchers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subject-instance_method" title="#subject (instance method)">#<strong>subject</strong>(&amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>When using <code>should</code> or <code>should_not</code> with a matcher, allows you to set the object that the matcher will run against.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="before_should-instance_method">
+  
+    #<strong>before_should</strong>(name, &amp;blk)  &#x21d2; <tt><span class='object_link'>Shoulda::Context::Context</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p><code>before_should</code> statements are <code>should</code> statements that run before the
+current context&#39;s <code>setup</code>. These are especially useful when setting
+expectations.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="c1"># This would actually be a different parent class, but you get the idea</span>
+<span class="k">class</span> <span class="nc">UsersControllerTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">context</span> <span class="s2">&quot;the index action&quot;</span> <span class="k">do</span>
+    <span class="n">setup</span> <span class="k">do</span>
+      <span class="vi">@users</span> <span class="o">=</span> <span class="o">[</span><span class="no">FactoryBot</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span><span class="o">]</span>
+      <span class="no">User</span><span class="o">.</span><span class="n">stubs</span><span class="p">(</span><span class="ss">:find</span><span class="p">)</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="vi">@users</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">context</span> <span class="s2">&quot;on GET&quot;</span> <span class="k">do</span>
+      <span class="n">setup</span> <span class="p">{</span> <span class="n">get</span> <span class="ss">:index</span> <span class="p">}</span>
+
+      <span class="n">should</span> <span class="n">respond_with</span><span class="p">(</span><span class="ss">:success</span><span class="p">)</span>
+
+      <span class="c1"># this actually runs before &quot;get :index&quot;</span>
+      <span class="n">before_should</span> <span class="s2">&quot;find all users&quot;</span> <span class="k">do</span>
+        <span class="no">User</span><span class="o">.</span><span class="n">expects</span><span class="p">(</span><span class="ss">:find</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="vi">@users</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Shoulda::Context::Context</span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+129
+130
+131</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 129</span>
+
+<span></span><span class="k">def</span> <span class="nf">before_should</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="n">should</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="n">blk</span><span class="p">)</span> <span class="p">{</span> <span class="n">assert</span> <span class="kp">true</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="context-instance_method">
+  
+    #<strong>context</strong>(name, &amp;blk)  &#x21d2; <tt><span class='object_link'>Shoulda::Context::Context</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>A <code>context</code> block groups <code>should</code> statements under a common set of
+setup/teardown methods. Context blocks can be arbitrarily nested, and
+can do wonders for improving the maintainability and readability of
+your test code.</p>
+
+<p>A <code>context</code> block can contain <code>setup</code>, <code>should</code>, <code>should_eventually</code>,
+and <code>teardown</code> blocks.</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">context</span> <span class="s2">&quot;A User instance&quot;</span> <span class="k">do</span>
+    <span class="n">setup</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span>
+    <span class="k">end</span>
+
+    <span class="n">should</span> <span class="s2">&quot;return its full name&quot;</span>
+      <span class="n">assert_equal</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span> <span class="vi">@user</span><span class="o">.</span><span class="n">full_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>This code will produce the method <code>&quot;test: A User instance should
+return its full name. &quot;</code>.</p>
+
+<p>Contexts may be nested. Nested contexts run their <code>setup</code> blocks from
+out to in before each <code>should</code> statement. They then run their
+<code>teardown</code> blocks from in to out after each <code>should</code> statement.</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">context</span> <span class="s2">&quot;A User instance&quot;</span> <span class="k">do</span>
+    <span class="n">setup</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span>
+    <span class="k">end</span>
+
+    <span class="n">should</span> <span class="s2">&quot;return its full name&quot;</span>
+      <span class="n">assert_equal</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span> <span class="vi">@user</span><span class="o">.</span><span class="n">full_name</span>
+    <span class="k">end</span>
+
+    <span class="n">context</span> <span class="s2">&quot;with a profile&quot;</span> <span class="k">do</span>
+      <span class="n">setup</span> <span class="k">do</span>
+        <span class="vi">@user</span><span class="o">.</span><span class="n">profile</span> <span class="o">=</span> <span class="no">Profile</span><span class="o">.</span><span class="n">first</span>
+      <span class="k">end</span>
+
+      <span class="n">should</span> <span class="s2">&quot;return true when sent :has_profile?&quot;</span>
+        <span class="n">assert</span> <span class="vi">@user</span><span class="o">.</span><span class="n">has_profile?</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>This code will produce the following methods:</p>
+
+<ul>
+<li><code>&quot;test: A User instance should return its full name. &quot;</code></li>
+<li><code>&quot;test: A User instance with a profile should return true when sent :has_profile?. &quot;</code></li>
+</ul>
+
+<p><strong>Just like <code>should</code> statements, a <code>context</code> block can exist next to
+normal <code>def test_the_old_way; end</code> tests.</strong> This means you do not have
+to fully commit to the <code>context</code>/<code>should</code> syntax in a test file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Shoulda::Context::Context</span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+206
+207
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 206</span>
+
+<span></span><span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="k">if</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span>
+    <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">build</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="described_type-instance_method">
+  
+    #<strong>described_type</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the class being tested, as determined by the test class name.</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">described_type</span>  <span class="c1"># =&gt; User</span>
+<span class="k">end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+221
+222
+223
+224
+225
+226
+227
+228</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 221</span>
+
+<span></span><span class="k">def</span> <span class="nf">described_type</span>
+  <span class="vi">@described_type</span> <span class="o">||=</span> <span class="nb">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span>
+    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/Test$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span>
+    <span class="nb">split</span><span class="p">(</span><span class="s1">&#39;::&#39;</span><span class="p">)</span><span class="o">.</span>
+    <span class="n">inject</span><span class="p">(</span><span class="no">Object</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">parent</span><span class="p">,</span> <span class="n">local_name</span><span class="o">|</span>
+      <span class="n">parent</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">local_name</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="should-instance_method">
+  
+    #<strong>should</strong>(name_or_matcher, options = {}, &amp;blk)  &#x21d2; <tt><span class='object_link'>Shoulda::Context::Context</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p><code>should</code> statements are just syntactic sugar over normal Test::Unit
+test methods. A <code>should</code> block contains all the normal code and
+assertions you&#39;re used to seeing, with the added benefit that they can
+be wrapped inside <code>context</code> blocks (see below).</p>
+
+<p>For example, this test case:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Doe&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">should</span> <span class="s2">&quot;return its full name&quot;</span>
+    <span class="n">assert_equal</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span> <span class="vi">@user</span><span class="o">.</span><span class="n">full_name</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>...will produce the following test:</p>
+
+<ul>
+<li><code>&quot;test: User should return its full name. &quot;</code></li>
+</ul>
+
+<p>The part before <code>should</code> in the test name is gleaned from the name of
+the test case class.</p>
+
+<p><code>should</code> statements can also take a proc as a <code>:before</code> option. This
+proc runs after any parent context&#39;s <code>setup</code>s but before the current
+context&#39;s <code>setup</code>.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">SomeTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">context</span> <span class="s2">&quot;Some context&quot;</span> <span class="k">do</span>
+    <span class="n">setup</span> <span class="p">{</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;I run after the :before proc&quot;</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">should</span> <span class="s2">&quot;run a :before proc&quot;</span><span class="p">,</span> <span class="ss">before</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;I run before the setup&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="k">do</span>
+      <span class="n">assert</span> <span class="kp">true</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><code>should</code> statements can also wrap matchers, making virtually any
+matcher usable in a macro style. The matcher&#39;s description is used to
+generate a test name and failure message, and the test will pass if
+the matcher matches the subject.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="n">should</span> <span class="n">validate_presence_of</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">)</span><span class="o">.</span><span class="n">with_message</span><span class="p">(</span><span class="sr">/gotta be there/</span><span class="p">)</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Shoulda::Context::Context</span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 66</span>
+
+<span></span><span class="k">def</span> <span class="nf">should</span><span class="p">(</span><span class="n">name_or_matcher</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{},</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="k">if</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span>
+    <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">name_or_matcher</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">context_name</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/Test$/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">name</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="nb">self</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">should</span><span class="p">(</span><span class="n">name_or_matcher</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">build</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="should_eventually-instance_method">
+  
+    #<strong>should_eventually</strong>(name, options = {}, &amp;blk)  &#x21d2; <tt><span class='object_link'>Shoulda::Context::Context</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Just like <code>should</code>, but never runs, instead printing an &#39;X&#39; when the
+test is run.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Shoulda::Context::Context</span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+138
+139
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 138</span>
+
+<span></span><span class="k">def</span> <span class="nf">should_eventually</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{},</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="n">context_name</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/Test$/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">context</span> <span class="o">=</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="nb">self</span><span class="p">)</span> <span class="k">do</span>
+    <span class="n">should_eventually</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">build</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="should_not-instance_method">
+  
+    #<strong>should_not</strong>(matcher)  &#x21d2; <tt><span class='object_link'>Shoulda::Context::Context</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Allows negative tests using matchers. The matcher&#39;s description is
+used to generate a test name and negative failure message, and the
+test will pass unless the matcher matches the subject.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>should_not set_the_flash</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Shoulda::Context::Context</span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 88</span>
+
+<span></span><span class="k">def</span> <span class="nf">should_not</span><span class="p">(</span><span class="n">matcher</span><span class="p">)</span>
+  <span class="k">if</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span>
+    <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">current_context</span><span class="o">.</span><span class="n">should_not</span><span class="p">(</span><span class="n">matcher</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">context_name</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/Test$/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">name</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="no">Shoulda</span><span class="o">::</span><span class="no">Context</span><span class="o">::</span><span class="no">Context</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="nb">self</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">should_not</span><span class="p">(</span><span class="n">matcher</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">build</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subject-instance_method">
+  
+    #<strong>subject</strong>(&amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>When using <code>should</code> or <code>should_not</code> with a matcher, allows you to set
+the object that the matcher will run against.</p>
+
+<p>For instance, this code:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span> <span class="p">}</span>
+
+  <span class="n">should</span> <span class="n">validate_uniqueness_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>is essentially equivalent to:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="k">def</span> <span class="nf">test_uniqueness</span>
+    <span class="n">assert_accepts</span> <span class="n">validate_uniqueness_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">),</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>which is equivalent to:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="k">def</span> <span class="nf">test_uniqueness</span>
+    <span class="n">matcher</span> <span class="o">=</span> <span class="n">validate_uniqueness_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+    <span class="n">assert</span> <span class="n">matcher</span><span class="o">.</span><span class="n">matches?</span><span class="p">(</span><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="p">),</span> <span class="n">matcher</span><span class="o">.</span><span class="n">failure_message</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>The difference between this and the old-style <code>test_*</code> method is that
+setting the <code>subject</code> configures the behavior for multiple matchers,
+not just one at a time:</p>
+
+<pre class="code ruby"><code class="ruby"><span></span><span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+  <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span> <span class="p">}</span>
+
+  <span class="n">should</span> <span class="n">validate_presence_of</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+  <span class="n">should</span> <span class="n">validate_presence_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+  <span class="n">should</span> <span class="n">validate_uniqueness_of</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+270
+271
+272</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/dsl.rb', line 270</span>
+
+<span></span><span class="k">def</span> <span class="nf">subject</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="vi">@subject_block</span> <span class="o">=</span> <span class="n">block</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

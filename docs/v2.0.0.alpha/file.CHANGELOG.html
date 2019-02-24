@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: CHANGELOG
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "CHANGELOG";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    <span class="title">CHANGELOG</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><div id='filecontents'><h1>Changelog</h1>
+
+<h2>2.0.0 (unreleased)</h2>
+
+<h3>Backward-incompatible changes</h3>
+
+<ul>
+<li>Drop support for RSpec 2 matchers. Matchers passed to <code>should</code> must conform
+to RSpec 3&#39;s API (<code>failure_message</code> and <code>failure_message_when_negated</code>).</li>
+<li>Drop support for Minitest 4.x (last updated in 2013).</li>
+<li>Drop support for end-of-lifed versions of Rails. Rails 4.2.x, 5.1.x, and 5.2.x
+are the only versions supported now.</li>
+<li>Drop support for end-of-lifed versions of Ruby. Ruby 2.3.x, 2.4.x and 2.5.x
+are the only versions supported now.</li>
+</ul>
+
+<h3>Bug fixes</h3>
+
+<ul>
+<li>Fix how test names are generated so that when including the name of the
+outermost test class, &quot;Test&quot; is not removed from the class name if it does not
+fall at the end.</li>
+<li>Remove warning from Ruby about <code>context</code> not being used when using the gem
+with warnings enabled.</li>
+<li>Fix macro autoloading code. Files intended to hold custom macros which are
+located in either <code>test/shoulda_macros</code>, <code>vendor/gems/*/shoulda_macros</code>, or
+<code>vendor/plugins/*/shoulda_macros</code> are now loaded and mixed into your test
+framework&#39;s automatically.</li>
+<li>Restore compatibility with Shoulda Matchers, starting from 3.0.</li>
+<li>Fix some compatibility issues with Minitest 5.</li>
+</ul>
+</div></div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>

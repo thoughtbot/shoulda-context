@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Shoulda
+  
+    &mdash; Documentation by YARD 0.9.18
+  
+</title>
+
+  <link rel="stylesheet" href="css/solarized.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/global.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Shoulda";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.stickyheaders.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/underscore.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-row">
+        <div id="menu">
+  
+    <span class="title">
+      <a href="index.html" title="Home">Home</a>
+    </span> &raquo;
+  
+  
+    
+    
+    <span class="title">Shoulda</span>
+  
+</div>
+
+        <div id="search" class="js-search">
+  <ul>
+    
+      <li>
+        <a href="class_list.html">
+          Class List
+        </a>
+      </li>
+    
+      <li>
+        <a href="method_list.html">
+          Method List
+        </a>
+      </li>
+    
+      <li>
+        <a href="file_list.html">
+          File List
+        </a>
+      </li>
+    
+  </ul>
+
+  <iframe id="search_frame" class="js-search-frame"></iframe>
+</div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id="content"><h1>Module: Shoulda
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+</dl>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Shoulda/Context.html" title="Shoulda::Context (module)">Context</a></span>
+    
+  
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#autoload_macros-class_method" title="autoload_macros (class method)">.<strong>autoload_macros</strong>(root, *dirs)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Call <code>Shoulda.autoload_macros</code> when you want to load test macros automatically in a non-Rails project (it&#39;s done automatically for Rails projects).</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="autoload_macros-class_method">
+  
+    .<strong>autoload_macros</strong>(root, *dirs)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p><p>Call <code>Shoulda.autoload_macros</code> when you want to load test macros
+automatically in a non-Rails project (it&#39;s done automatically for Rails
+projects).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Basic usage:</p>
+</div></p>
+      
+      <pre class="example code"><code><span></span><span class="c1"># File: test/test_helper.rb</span>
+<span class="c1">#</span>
+<span class="c1"># This will load everything in:</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/test/shoulda_macros</span>
+<span class="c1">#</span>
+<span class="no">Shoulda</span><span class="o">.</span><span class="n">autoload_macros</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/..&#39;</span><span class="p">)</span>
+</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Loading vendored macros:</p>
+</div></p>
+      
+      <pre class="example code"><code><span></span><span class="c1"># File: test/test_helper.rb</span>
+<span class="c1">#</span>
+<span class="c1"># This will load everything in:</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/vendor/*/shoulda_macros</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/test/shoulda_macros</span>
+<span class="c1">#</span>
+<span class="no">Shoulda</span><span class="o">.</span><span class="n">autoload_macros</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s1">&#39;vendor/*&#39;</span><span class="p">)</span>
+</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Load macros in an app with a vendor directory laid out like Rails&#39;:</p>
+</div></p>
+      
+      <pre class="example code"><code><span></span><span class="c1"># File: test/test_helper.rb</span>
+<span class="c1">#</span>
+<span class="c1"># This will load everything in:</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/vendor/plugins/*/shoulda_macros</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/vendor/gems/*/shoulda_macros</span>
+<span class="c1"># - &lt;APP_ROOT&gt;/test/shoulda_macros</span>
+<span class="c1">#</span>
+<span class="no">Shoulda</span><span class="o">.</span><span class="n">autoload_macros</span><span class="p">(</span><span class="no">APP_ROOT</span><span class="p">,</span> <span class="s1">&#39;vendor/{plugins,gems}/*&#39;</span><span class="p">)</span>
+</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>root</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to your project&#39;s root directory.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dirs</span>
+      
+      
+        <span class='type'>(<tt>String...</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Directories relative to your root, which contain
+<code>shoulda_macros</code> directories. These can be globs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td class="lines">
+      <pre>
+
+
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td class="code">
+      <pre><span class="info file"># File 'lib/shoulda/context/autoload_macros.rb', line 38</span>
+
+<span></span><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">autoload_macros</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">dirs</span><span class="p">)</span>
+  <span class="n">dirs</span> <span class="o">&lt;&lt;</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+  <span class="n">complete_dirs</span> <span class="o">=</span> <span class="n">dirs</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">d</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s1">&#39;shoulda_macros&#39;</span><span class="p">)}</span>
+  <span class="n">all_files</span>     <span class="o">=</span> <span class="n">complete_dirs</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="o">[]</span><span class="p">){</span> <span class="o">|</span><span class="n">files</span><span class="p">,</span> <span class="n">dir</span><span class="o">|</span> <span class="n">files</span> <span class="o">+</span> <span class="no">Dir</span><span class="o">[</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="s1">&#39;*.rb&#39;</span><span class="p">)</span><span class="o">]</span> <span class="p">}</span>
+  <span class="n">all_files</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="nb">require</span> <span class="n">file</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on
+  February 24, 2019
+  by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">YARD</a>.
+</div>
+
+    </div>
+
+  </body>
+</html>
