@@ -12,7 +12,10 @@ Shoulda Context makes it easy to write understandable and maintainable tests
 under Minitest and Test::Unit within Rails projects or plain Ruby projects. It's
 fully compatible with your existing tests and requires no retooling to use.
 
-**[View the documentation for the latest version (1.2.2).][rubydocs]**
+**[View the documentation for the latest version (1.2.2)][rubydocs] • [View
+the changelog][changelog]**
+
+[changelog]: CHANGELOG.md
 
 ---
 
