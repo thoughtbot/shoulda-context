@@ -13,7 +13,7 @@ Rake::TestTask.new do |t|
 end
 
 task :default do
-  if ENV["CI"]
+  if ENV["BUNDLE_GEMFILE"]
     exec "rake test --trace"
   else
     exec "appraisal install && appraisal rake test --trace"
