@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SUPPORTED_VERSIONS=$(script/supported_ruby_versions)
+SUPPORTED_VERSIONS=$(bin/supported_ruby_versions)
 
 run-tests-for-version() {
   local version="$1"

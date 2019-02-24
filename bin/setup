@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-RUBY_VERSION=$(script/supported_ruby_versions | xargs -n 1 echo | sort -V | tail -n 1)
+RUBY_VERSION=$(bin/supported_ruby_versions | xargs -n 1 echo | sort -V | tail -n 1)
 
 cd "$(dirname "$(dirname "$0")")"
 
