@@ -22,4 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "appraisal"
   s.add_development_dependency "bundler", "~> 1.0"
+  s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "rake"
 end

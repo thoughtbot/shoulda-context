@@ -144,7 +144,6 @@ DEPENDENCIES
   m
   minitest
   mocha
-  pry
   pry-byebug
   rails
   rake
