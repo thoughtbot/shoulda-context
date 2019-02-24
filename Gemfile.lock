@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/mcmire/snowglobe
+  revision: 1a0ed03a178859a80de76ad43083d2adf0efdac9
+  specs:
+    snowglobe (0.1.0)
+
 PATH
   remote: .
   specs:
@@ -148,6 +154,7 @@ DEPENDENCIES
   rails
   rake
   shoulda-context!
+  snowglobe!
   test-unit
 
 BUNDLED WITH

@@ -7,6 +7,10 @@ require "shoulda/context/test_framework_detection"
 require "shoulda/context/version"
 require "shoulda/context/world"
 
+if defined?(Rails)
+  require "shoulda/context/railtie"
+end
+
 Shoulda::Context.configure do |config|
   config.include(Shoulda::Context::DSL)
 end

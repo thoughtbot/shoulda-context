@@ -45,3 +45,5 @@ require "shoulda/context"
 
 Shoulda.autoload_macros File.join(File.dirname(__FILE__), "fake_rails_root"),
   File.join("vendor", "{plugins,gems}", "*")
+
+require_relative "./support/rails_application_with_shoulda_context"

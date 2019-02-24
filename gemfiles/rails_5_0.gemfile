@@ -6,6 +6,7 @@ gem "m"
 gem "minitest"
 gem "mocha"
 gem "rails", "~> 5.0.0"
+gem "snowglobe", git: "https://github.com/mcmire/snowglobe"
 gem "test-unit"
 gem "sqlite3", "~> 1.3.6"
 
