@@ -1,6 +1,7 @@
 module Shoulda
   module Context
-    class Context # :nodoc:
+    # @private
+    class Context
       attr_accessor :name               # my name
       attr_accessor :parent             # may be another context, or the original test::unit class.
       attr_accessor :subcontexts        # array of contexts nested under myself
@@ -201,6 +202,7 @@ module Shoulda
       end
     end
 
+    # @private
     class DuplicateTestError < RuntimeError; end
   end
 end

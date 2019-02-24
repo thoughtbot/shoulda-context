@@ -1,20 +1,25 @@
 module Shoulda
   module Context
     class << self
-      def contexts # :nodoc:
+      # @private
+      def contexts
         @contexts ||= []
       end
+      # @private
       attr_writer :contexts
 
-      def current_context # :nodoc:
+      # @private
+      def current_context
         self.contexts.last
       end
 
-      def add_context(context) # :nodoc:
+      # @private
+      def add_context(context)
         self.contexts.push(context)
       end
 
-      def remove_context # :nodoc:
+      # @private
+      def remove_context
         self.contexts.pop
       end
     end

@@ -1,0 +1,8 @@
+--no-private
+--protected
+--readme README.md
+--markup markdown
+-e ./doc_config/yard/setup.rb
+-
+CHANGELOG.md
+docs/**/*.md

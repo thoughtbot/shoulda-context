@@ -1,5 +1,6 @@
 module Shoulda
   module Context
+    # @private
     module TestFrameworkDetection
       def self.possible_test_frameworks
         [
@@ -26,6 +27,7 @@ module Shoulda
       end
     end
 
+    # @private
     def self.test_framework_test_cases
       TestFrameworkDetection.test_framework_test_cases
     end

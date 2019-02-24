@@ -1,5 +1,6 @@
 module Shoulda
   module Context
+    # @private
     class Railtie < Rails::Railtie
       initializer "shoulda_context.autoload_macros" do
         if Rails.env.test?

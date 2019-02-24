@@ -8,3 +8,9 @@ gem "mocha"
 gem "rails"
 gem "snowglobe", git: "https://github.com/mcmire/snowglobe"
 gem "test-unit"
+
+# YARD
+gem "fssm"
+gem "pygments.rb"
+gem "redcarpet"
+gem "yard"

@@ -1,6 +1,7 @@
 # Stolen straight from ActiveSupport
 
-class Proc #:nodoc:
+# @private
+class Proc
   def bind(object)
     block, time = self, Time.now
     (class << object; self end).class_eval do

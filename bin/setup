@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-RUBY_VERSION=$(bin/supported_ruby_versions | xargs -n 1 echo | sort -V | tail -n 1)
+REQUIRED_RUBY_VERSION=$(cat .ruby-version)
+REQUIRED_PYTHON_VERSION=$(cat .python-version)
 
 cd "$(dirname "$(dirname "$0")")"
 
@@ -13,6 +14,10 @@ if [[ $uname == 'Darwin' ]]; then
 else
   platform='linux'
 fi
+
+echo-wrapped() {
+  echo "$@" | fmt -w 80 | cat
+}
 
 banner() {
   echo -e "\033[34m== $@ ==\033[0m"
@@ -90,9 +95,10 @@ check-for-build-tools() {
   if [[ $platform == "linux" ]]; then
     if ! has-executable apt-get; then
       error "You don't seem to have a package manager installed."
-      echo "The setup script assumes you're using Debian or a Debian-derived flavor of Linux"
-      echo "(i.e. something with Apt). If this is not the case, then we would gladly take a"
-      echo "PR fixing this!"
+      echo-wrapped "\
+The setup script assumes you're using Debian or a Debian-derived flavor of Linux
+(i.e. something with Apt). If this is not the case, then we would gladly take a
+PR fixing this!"
       exit 1
     fi
 
@@ -100,10 +106,12 @@ check-for-build-tools() {
   else
     if ! has-executable brew; then
       error "You don't seem to have Homebrew installed."
-      echo
-      echo "Follow the instructions here to do this:"
-      echo
-      echo "http://brew.sh"
+      echo-wrapped "\
+Follow the instructions here to do this:
+
+    http://brew.sh
+
+Then re-run this script."
       exit 1
     fi
 
@@ -123,31 +131,20 @@ install-dependencies() {
     install apt=libsqlite3-dev rpm=sqlite-devel
   fi
 
-  if ! has-executable psql; then
-    banner 'Installing PostgreSQL'
-    install postgresql
-    install apt=libpq-dev rpm=postgresql-devel
-  fi
-
-  if ! is-running postgres; then
-    banner 'Starting PostgreSQL'
-    start postgresql
-  fi
-
   if ! has-executable heroku; then
     banner 'Installing Heroku'
     install heroku/brew/heroku heroku
   fi
 
   if has-executable rbenv; then
-    if ! (rbenv versions | grep $RUBY_VERSION'\>' &>/dev/null); then
-      banner "Installing Ruby $RUBY_VERSION with rbenv"
-      rbenv install --skip-existing "$RUBY_VERSION"
+    if ! (rbenv versions | grep $REQUIRED_RUBY_VERSION'\>' &>/dev/null); then
+      banner "Installing Ruby $REQUIRED_RUBY_VERSION with rbenv"
+      rbenv install --skip-existing "$REQUIRED_RUBY_VERSION"
     fi
   elif has-executable rvm; then
-    if ! (rvm ls | grep $RUBY_VERSION'\>' &>/dev/null); then
-      banner "Installing Ruby $RUBY_VERSION with rvm"
-      error "You don't seem to have Ruby $RUBY_VERSION installed."
+    if ! (rvm ls | grep $REQUIRED_RUBY_VERSION'\>' &>/dev/null); then
+      banner "Installing Ruby $REQUIRED_RUBY_VERSION with rvm"
+      error "You don't seem to have Ruby $REQUIRED_RUBY_VERSION installed."
       echo
       echo "Use RVM to do so, and then re-run this command."
       echo
@@ -157,7 +154,23 @@ install-dependencies() {
     echo
     echo 'We recommend using rbenv. You can find installation instructions here:'
     echo
-    echo 'http://github.com/rbenv/rbenv'
+    echo 'http://github.com/rbenv/rbenv#installation'
+    echo
+    echo "When you're done, simply re-run this script!"
+    exit 1
+  fi
+
+  if has-executable pyenv; then
+    if ! (pyenv versions | grep $REQUIRED_PYTHON_VERSION'\>' &>/dev/null); then
+      banner "Installing Python $REQUIRED_PYTHON_VERSION with pyenv"
+      pyenv install --skip-existing "$REQUIRED_PYTHON_VERSION"
+    fi
+  else
+    error "You don't seem to have a Python manager installed."
+    echo
+    echo 'We recommend using pyenv. You can find installation instructions here:'
+    echo
+    echo 'https://github.com/pyenv/pyenv#installation'
     echo
     echo "When you're done, simply re-run this script!"
     exit 1

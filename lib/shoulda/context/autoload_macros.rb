@@ -1,40 +1,40 @@
-module Shoulda # :nodoc:
-  # Call autoload_macros when you want to load test macros automatically in a non-Rails
-  # project (it's done automatically for Rails projects).
-  # You don't need to specify ROOT/test/shoulda_macros explicitly. Your custom macros
-  # are loaded automatically when you call autoload_macros.
+module Shoulda
+  # Call `Shoulda.autoload_macros` when you want to load test macros
+  # automatically in a non-Rails project (it's done automatically for Rails
+  # projects).
   #
-  # The first argument is the path to you application's root directory.
-  # All following arguments are directories relative to your root, which contain
-  # shoulda_macros subdirectories. These directories support the same kinds of globs as the
-  # Dir class.
+  # @param root [String] The path to your project's root directory.
+  # @param dirs [String...] Directories relative to your root, which contain
+  #   `shoulda_macros` directories. These can be globs.
   #
-  # Basic usage (from a test_helper):
-  # Shoulda.autoload_macros(File.dirname(__FILE__) + '/..')
-  # will load everything in
-  # - your_app/test/shoulda_macros
+  # @example Basic usage:
+  #   # File: test/test_helper.rb
+  #   #
+  #   # This will load everything in:
+  #   # - <APP_ROOT>/test/shoulda_macros
+  #   #
+  #   Shoulda.autoload_macros(File.dirname(__FILE__) + '/..')
   #
-  # To load vendored macros as well:
-  # Shoulda.autoload_macros(APP_ROOT, 'vendor/*')
-  # will load everything in
-  # - APP_ROOT/vendor/*/shoulda_macros
-  # - APP_ROOT/test/shoulda_macros
+  # @example Loading vendored macros:
+  #   # File: test/test_helper.rb
+  #   #
+  #   # This will load everything in:
+  #   # - <APP_ROOT>/vendor/*/shoulda_macros
+  #   # - <APP_ROOT>/test/shoulda_macros
+  #   #
+  #   Shoulda.autoload_macros(APP_ROOT, 'vendor/*')
   #
-  # To load macros in an app with a vendor directory laid out like Rails':
-  # Shoulda.autoload_macros(APP_ROOT, 'vendor/{plugins,gems}/*')
-  # or
-  # Shoulda.autoload_macros(APP_ROOT, 'vendor/plugins/*', 'vendor/gems/*')
-  # will load everything in
-  # - APP_ROOT/vendor/plugins/*/shoulda_macros
-  # - APP_ROOT/vendor/gems/*/shoulda_macros
-  # - APP_ROOT/test/shoulda_macros
+  # @example Load macros in an app with a vendor directory laid out like Rails':
+  #   # File: test/test_helper.rb
+  #   #
+  #   # This will load everything in:
+  #   # - <APP_ROOT>/vendor/plugins/*/shoulda_macros
+  #   # - <APP_ROOT>/vendor/gems/*/shoulda_macros
+  #   # - <APP_ROOT>/test/shoulda_macros
+  #   #
+  #   Shoulda.autoload_macros(APP_ROOT, 'vendor/{plugins,gems}/*')
   #
-  # If you prefer to stick testing dependencies away from your production dependencies:
-  # Shoulda.autoload_macros(APP_ROOT, 'vendor/*', 'test/vendor/*')
-  # will load everything in
-  # - APP_ROOT/vendor/*/shoulda_macros
-  # - APP_ROOT/test/vendor/*/shoulda_macros
-  # - APP_ROOT/test/shoulda_macros
+  # @return [void]
   def self.autoload_macros(root, *dirs)
     dirs << File.join('test')
     complete_dirs = dirs.map{|d| File.join(root, d, 'shoulda_macros')}
