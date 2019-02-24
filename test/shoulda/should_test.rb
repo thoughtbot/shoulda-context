@@ -187,7 +187,7 @@ class ShouldTest < PARENT_TEST_CASE
       should "dup" do; end
       should "dup" do; end
     end
-    assert_raises DuplicateTestError do
+    assert_raises Shoulda::Context::DuplicateTestError do
       context.build
     end
   end
