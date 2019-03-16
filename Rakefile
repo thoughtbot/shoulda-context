@@ -1,21 +1,26 @@
 require "bundler/setup"
 require "bundler/gem_tasks"
 require "rake/testtask"
-require "appraisal"
+require "pry-byebug"
 
-$LOAD_PATH.unshift("lib")
+require_relative "test/support/current_bundle"
+
 load "tasks/shoulda.rake"
 
 Rake::TestTask.new do |t|
-  t.libs << "lib" << "test"
+  t.libs << "test"
+  t.ruby_opts += ["-w"]
   t.pattern = "test/**/*_test.rb"
   t.verbose = false
 end
 
 task :default do
-  if ENV["BUNDLE_GEMFILE"]
-    exec "rake test --trace"
+  if Tests::CurrentBundle.instance.appraisal_in_use?
+    Rake::Task["test"].invoke
+  elsif ENV["CI"]
+    exec "appraisal install && appraisal rake --trace"
   else
-    exec "appraisal install && appraisal rake test --trace"
+    appraisal = Tests::CurrentBundle.instance.latest_appraisal
+    exec "appraisal install && appraisal #{appraisal} rake --trace"
   end
 end

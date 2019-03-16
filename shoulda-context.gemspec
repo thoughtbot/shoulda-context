@@ -1,27 +1,32 @@
 # -*- encoding: utf-8 -*-
-$LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
-require 'shoulda/context/version'
+
+$LOAD_PATH << File.join(File.dirname(__FILE__), "lib")
+require "shoulda/context/version"
 
 Gem::Specification.new do |s|
-  s.name        = %q{shoulda-context}
+  s.name        = "shoulda-context"
   s.version     = Shoulda::Context::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["thoughtbot, inc.", "Tammer Saleh", "Joe Ferris",
                    "Ryan McGeary", "Dan Croak", "Matt Jankowski"]
-  s.email       = %q{support@thoughtbot.com}
-  s.homepage    = %q{http://thoughtbot.com/community/}
-  s.summary     = %q{Context framework extracted from Shoulda}
-  s.description = %q{Context framework extracted from Shoulda}
-  s.license     = %q{MIT}
+  s.email       = "support@thoughtbot.com"
+  s.homepage    = "http://thoughtbot.com/community/"
+  s.summary     = "Context framework extracted from Shoulda"
+  s.description = "Context framework extracted from Shoulda"
+  s.license     = "MIT"
 
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables      = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
-  s.bindir           = 'exe'
+  s.executables      = `git ls-files -- exe/*`.split("\n").map { |f| File.basename(f) }
+  s.bindir           = "exe"
   s.require_paths    = ["lib"]
 
   s.add_development_dependency "appraisal"
   s.add_development_dependency "bundler", "~> 1.0"
+  s.add_development_dependency "m"
+  s.add_development_dependency "mocha"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
+  s.add_development_dependency "rubocop"
+  s.add_development_dependency "snowglobe"
 end

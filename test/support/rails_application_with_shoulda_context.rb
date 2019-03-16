@@ -21,7 +21,7 @@ class RailsApplicationWithShouldaContext < Snowglobe::RailsApplication
   end
 
   def create_gem_with_macro(module_name:, location:, macro_name:)
-    fs.write("#{location}/shoulda_macros/macros.rb", <<~FILE)
+    fs.write_file("#{location}/shoulda_macros/macros.rb", <<~FILE)
       module #{module_name}
         def #{macro_name}
           puts "#{macro_name} is available"

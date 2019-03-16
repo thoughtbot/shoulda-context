@@ -2,25 +2,25 @@ require "test_helper"
 require "tempfile"
 
 class TestFrameworkDetectionTest < PARENT_TEST_CASE
-  if CURRENT_APPRAISAL_NAME == "rails_5_2"
+  if Tests::CurrentBundle.instance.current_appraisal == "rails_5_2"
     should "detect Minitest 5.x w/ Rails 5.2" do
       assert_integration_with_rails_and "Minitest::Test"
     end
   end
 
-  if CURRENT_APPRAISAL_NAME == "rails_5_1"
+  if Tests::CurrentBundle.instance.current_appraisal == "rails_5_1"
     should "detect Minitest 5.x w/ Rails 5.1" do
       assert_integration_with_rails_and "Minitest::Test"
     end
   end
 
-  if CURRENT_APPRAISAL_NAME == "rails_5_0"
+  if Tests::CurrentBundle.instance.current_appraisal == "rails_5_0"
     should "detect Minitest 5.x w/ Rails 5.0" do
       assert_integration_with_rails_and "Minitest::Test"
     end
   end
 
-  if CURRENT_APPRAISAL_NAME == "rails_4_2"
+  if Tests::CurrentBundle.instance.current_appraisal == "rails_4_2"
     should "detect ActiveSupport::TestCase and Minitest 4.x w/ Rails 4.2" do
       assert_integration_with_rails_and "Minitest::Test"
     end
@@ -87,7 +87,8 @@ class TestFrameworkDetectionTest < PARENT_TEST_CASE
   def require_gems(mixins)
     <<-RUBY
       ENV["BUNDLE_GEMFILE"] =
-        "#{PROJECT_DIR}/gemfiles/#{CURRENT_APPRAISAL_NAME}.gemfile"
+        "#{PROJECT_DIR}/gemfiles/" +
+        "#{Tests::CurrentBundle.instance.current_appraisal}.gemfile"
       require "bundler"
       Bundler.setup
       #{mixins.join("\n")}

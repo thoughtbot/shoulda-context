@@ -106,6 +106,8 @@ Style/Encoding:
   Enabled: false
 Style/EvenOdd:
   Enabled: false
+Style/ExpandPathArguments:
+  Enabled: false
 Style/FlipFlop:
   Enabled: false
 Style/FormatString:
