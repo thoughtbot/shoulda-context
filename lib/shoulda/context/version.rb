@@ -1,5 +1,5 @@
 module Shoulda
   module Context
-    VERSION = '1.2.2'.freeze
+    VERSION = "2.0.0.rc1".freeze
   end
 end
