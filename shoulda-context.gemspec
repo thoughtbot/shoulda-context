@@ -28,5 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
   s.add_development_dependency "rubocop", "0.64.0"
-  s.add_development_dependency "snowglobe"
+  s.add_development_dependency "snowglobe", ">= 0.3.0"
 end

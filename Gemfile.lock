@@ -44,7 +44,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.0)
-    snowglobe (0.1.0)
+    snowglobe (0.3.0)
     test-unit (3.3.0)
       power_assert
     thor (0.20.3)
@@ -63,7 +63,7 @@ DEPENDENCIES
   rake
   rubocop (= 0.64.0)
   shoulda-context!
-  snowglobe
+  snowglobe (>= 0.3.0)
   test-unit
 
 BUNDLED WITH

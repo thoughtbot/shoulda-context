@@ -33,7 +33,7 @@ class RailtieTest < PARENT_TEST_CASE
         end
       RUBY
 
-      app.run_command!("bundle exec rake test")
+      app.run_n_unit_test_suite
     end
   end
 

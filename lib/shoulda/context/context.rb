@@ -112,22 +112,26 @@ module Shoulda
             "'#{test_name}' is defined more than once."
           )
         end
-        test_methods[test_unit_class][test_name.to_s] = true
 
+        test_methods[test_unit_class][test_name.to_s] = true
+        file, line_no = should[:block].source_location
         context = self
-        test_unit_class.__send__(:define_method, test_name) do
-          @shoulda_context = context
-          begin
-            context.run_parent_setup_blocks(self)
-            if should[:before]
-              instance_exec(&should[:before])
+
+        test_unit_class.class_eval <<-end_eval, file, line_no
+          define_method test_name do
+            @shoulda_context = context
+            begin
+              context.run_parent_setup_blocks(self)
+              if should[:before]
+                instance_exec(&should[:before])
+              end
+              context.run_current_setup_blocks(self)
+              instance_exec(&should[:block])
+            ensure
+              context.run_all_teardown_blocks(self)
             end
-            context.run_current_setup_blocks(self)
-            instance_exec(&should[:block])
-          ensure
-            context.run_all_teardown_blocks(self)
           end
-        end
+        end_eval
       end
 
       def build_test_name_from(should)
