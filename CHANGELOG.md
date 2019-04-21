@@ -25,3 +25,6 @@
   framework's automatically.
 * Restore compatibility with Shoulda Matchers, starting from 3.0.
 * Fix some compatibility issues with Minitest 5.
+* Fix running tests within a Rails < 5.2 environment so that when tests fail, an
+  error is not produced claiming that Minitest::Result cannot find a test
+  method.
