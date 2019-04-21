@@ -78,8 +78,8 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
-    parallel (1.14.0)
-    parser (2.6.0.0)
+    parallel (1.17.0)
+    parser (2.6.2.1)
       ast (~> 2.4.0)
     power_assert (1.1.3)
     powerpack (0.1.2)
@@ -89,7 +89,6 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
-    psych (3.1.0)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -118,12 +117,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (12.3.2)
-    rubocop (0.65.0)
+    rubocop (0.64.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
-      psych (>= 3.1.0)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
@@ -160,7 +158,7 @@ DEPENDENCIES
   pry-byebug
   rails (~> 5.1.0)
   rake
-  rubocop
+  rubocop (= 0.64.0)
   shoulda-context!
   snowglobe
   sqlite3 (~> 1.3.6)
