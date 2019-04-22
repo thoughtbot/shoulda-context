@@ -24,8 +24,8 @@ the changelog][changelog]**
 Instead of writing Ruby methods with `lots_of_underscores`, Shoulda Context lets
 you name your tests and group them together using English.
 
-At a minimum, the gem provides some convenience layers around core Minitest
-functionality. For instance, this test case:
+At a minimum, the gem provides some convenience layers around core Minitest /
+Test::Unit functionality. For instance, this test case:
 
 ```ruby
 class CalculatorTest < Minitest::Test
@@ -45,7 +45,7 @@ class CalculatorTest < Minitest::Test
 end
 ```
 
-is a prettier, but functionally equivalent, way of saying:
+turns into:
 
 ```ruby
 class CalculatorTest < Minitest::Test
