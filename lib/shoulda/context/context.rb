@@ -115,7 +115,12 @@ module Shoulda
 
         test_methods[test_unit_class][test_name.to_s] = true
         file, line_no = should[:block].source_location
-        context = self
+
+        # Ruby doesn't know that we are referring to this variable inside of the
+        # eval, so it will emit a warning that it's "assigned but unused".
+        # However, making a double assignment places `context` on the right hand
+        # side of the assignment, thereby putting it into use.
+        context = context = self
 
         test_unit_class.class_eval <<-end_eval, file, line_no
           define_method test_name do
