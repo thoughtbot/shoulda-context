@@ -4,6 +4,9 @@ Tests::CurrentBundle.instance.assert_appraisal!
 
 #---
 
+require "pry-byebug"
+require "warnings_logger"
+
 TEST_FRAMEWORK = ENV.fetch("TEST_FRAMEWORK", "minitest")
 
 if TEST_FRAMEWORK == "test_unit"
@@ -13,8 +16,6 @@ else
   require "minitest/autorun"
   require "mocha/minitest"
 end
-
-require "pry-byebug"
 
 PROJECT_DIR = File.expand_path("../..", __FILE__)
 PARENT_TEST_CASE =
@@ -30,6 +31,13 @@ ASSERTION_CLASS =
     Minitest::Assertion
   end
 
+WarningsLogger::Spy.call(
+  project_name: "shoulda-context",
+  project_directory: Pathname.new("../..").expand_path(__FILE__)
+)
+
+require_relative "support/rails_application_with_shoulda_context"
+
 require_relative "../lib/shoulda/context"
 
 Shoulda.autoload_macros(
@@ -37,4 +45,4 @@ Shoulda.autoload_macros(
   File.join("vendor", "{plugins,gems}", "*")
 )
 
-require_relative "support/rails_application_with_shoulda_context"
+$VERBOSE = true

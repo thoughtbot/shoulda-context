@@ -139,6 +139,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.4.1)
+    warnings_logger (0.1.0)
 
 PLATFORMS
   ruby
@@ -157,6 +158,7 @@ DEPENDENCIES
   snowglobe (>= 0.3.0)
   sqlite3 (~> 1.3.6)
   test-unit
+  warnings_logger
 
 BUNDLED WITH
    1.17.3

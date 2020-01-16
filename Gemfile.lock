@@ -49,6 +49,7 @@ GEM
       power_assert
     thor (0.20.3)
     unicode-display_width (1.4.1)
+    warnings_logger (0.1.0)
 
 PLATFORMS
   ruby
@@ -65,6 +66,7 @@ DEPENDENCIES
   shoulda-context!
   snowglobe (>= 0.3.0)
   test-unit
+  warnings_logger
 
 BUNDLED WITH
    1.17.3
