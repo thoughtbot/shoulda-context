@@ -34,7 +34,7 @@ GEM
       byebug (~> 10.0)
       pry (~> 0.10)
     rainbow (3.0.0)
-    rake (12.3.2)
+    rake (13.0.1)
     rubocop (0.64.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
