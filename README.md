@@ -171,7 +171,7 @@ thoughtbot. Thank you to all the [contributors].
 
 ## License
 
-Shoulda Context is copyright © 2006-2019 [thoughtbot, inc][thoughtbot-website].
+Shoulda Context is copyright © 2006-2020 [thoughtbot, inc][thoughtbot-website].
 It is free software, and may be redistributed under the terms specified in the
 [MIT-LICENSE](MIT-LICENSE) file.
 
