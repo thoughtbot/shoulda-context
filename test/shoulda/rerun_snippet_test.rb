@@ -19,9 +19,16 @@ class RerunSnippetTest < PARENT_TEST_CASE
 
         command_runner = app.run_n_unit_test_suite
 
+        expected_file_path_with_line_number =
+          if rails_version >= 6
+            "rails test test/models/failing_test.rb:5"
+          else
+            "bin/rails test test/models/failing_test.rb:5"
+          end
+
         assert_includes(
           command_runner.output,
-          "bin/rails test test/models/failing_test.rb:5"
+          expected_file_path_with_line_number
         )
       end
     end
@@ -29,5 +36,10 @@ class RerunSnippetTest < PARENT_TEST_CASE
 
   def app
     @_app ||= RailsApplicationWithShouldaContext.new
+  end
+
+  def rails_version
+    # TODO: Update snowglobe so that we don't have to do this
+    app.send(:bundle).version_of("rails")
   end
 end

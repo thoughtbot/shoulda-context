@@ -6,11 +6,11 @@
 
 * Drop support for RSpec 2 matchers. Matchers passed to `should` must conform
   to RSpec 3's API (`failure_message` and `failure_message_when_negated`).
-* Drop support for Minitest 4.x (last updated in 2013).
-* Drop support for end-of-lifed versions of Rails. Rails 4.2.x, 5.1.x, and 5.2.x
-  are the only versions supported now.
-* Drop support for end-of-lifed versions of Ruby. Ruby 2.3.x, 2.4.x and 2.5.x
-  are the only versions supported now.
+* Drop support for Minitest 4.x (except when used by Rails 4.x).
+* Drop support for older versions of Rails. Rails 4.x-6.x are the
+  only versions supported now.
+* Drop support for older versions of Ruby. Ruby 2.3.x-2.7.x are the only
+  versions supported now.
 
 ### Bug fixes
 

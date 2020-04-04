@@ -158,8 +158,8 @@ If this is too cumbersome, consider using the [m] gem to run tests instead:
 
 ## Compatibility
 
-Shoulda Context is tested and supported against Rails 5.x, Rails 4.2, Minitest
-5, Test::Unit 3, and Ruby 2.3+.
+Shoulda Context is tested and supported against Rails 4.x+, Minitest 4.x,
+Test::Unit 3.x, and Ruby 2.3+.
 
 ## Credits
 

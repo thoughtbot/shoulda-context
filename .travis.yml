@@ -1,28 +1,40 @@
 language: ruby
-sudo: false
+dist: xenial
+os: linux
 cache:
   directories:
     - vendor/bundle
 script: "bundle exec rake"
 # Source: <https://docs.travis-ci.com/user/languages/ruby/#bundler-20>
 before_install:
-  - gem update --system '2.7.8' --no-document
-  - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
+  - gem update --system '3.1.2' --no-document
+  - gem uninstall -v '< 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '< 2' --no-document
-install: "bundle install --jobs=3 --retry=3 --path vendor/bundle"
-
+  - nvm use v11.0.0
+  - bundle config set path vendor/bundle
+install: "bundle install --jobs=3 --retry=3"
 rvm:
-  - 2.6.1
-  - 2.5.1
-  - 2.4.4
   - 2.3.7
-
+  - 2.4.9
+  - 2.5.8
+  - 2.6.6
+  - 2.7.1
 env:
   - TEST_FRAMEWORK=minitest
   - TEST_FRAMEWORK=test_unit
-
 gemfile:
   - gemfiles/rails_4_2.gemfile
   - gemfiles/rails_5_0.gemfile
   - gemfiles/rails_5_1.gemfile
   - gemfiles/rails_5_2.gemfile
+  - gemfiles/rails_6_0.gemfile
+matrix:
+  exclude:
+    - rvm: 2.3.7
+      gemfile: gemfiles/rails_6_0.gemfile
+    - rvm: 2.4.9
+      gemfile: gemfiles/rails_6_0.gemfile
+    - rvm: 2.6.6
+      gemfile: gemfiles/rails_4_2.gemfile
+    - rvm: 2.7.1
+      gemfile: gemfiles/rails_4_2.gemfile
