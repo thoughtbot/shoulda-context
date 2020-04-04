@@ -163,9 +163,10 @@ Shoulda Context is tested and supported against Rails 5.x, Rails 4.2, Minitest
 
 ## Credits
 
-Shoulda Context is maintained by [Travis Jeffery][travis-jeffery] and
-thoughtbot. Thank you to all the [contributors].
+Shoulda Context is maintained by [Elliot Winkler][elliot-winkler], [Travis
+Jeffery][travis-jeffery], and thoughtbot. Thank you to all the [contributors].
 
+[elliot-winkler]: https://github.com/mcmire
 [travis-jeffery]: https://github.com/travisjeffery
 [contributors]: https://github.com/thoughtbot/shoulda-context/contributors
 
