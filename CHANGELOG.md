@@ -9,7 +9,7 @@
 * Drop support for Minitest 4.x (except when used by Rails 4.x).
 * Drop support for older versions of Rails. Rails 4.x-6.x are the
   only versions supported now.
-* Drop support for older versions of Ruby. Ruby 2.3.x-2.7.x are the only
+* Drop support for older versions of Ruby. Ruby 2.4.x-2.7.x are the only
   versions supported now.
 
 ### Bug fixes
