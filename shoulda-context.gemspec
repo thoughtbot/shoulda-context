@@ -20,15 +20,4 @@ Gem::Specification.new do |s|
   s.executables      = `git ls-files -- exe/*`.split("\n").map { |f| File.basename(f) }
   s.bindir           = "exe"
   s.require_paths    = ["lib"]
-
-  s.add_development_dependency "appraisal"
-  s.add_development_dependency "bundler", "~> 1.0"
-  s.add_development_dependency "byebug"
-  s.add_development_dependency "m"
-  s.add_development_dependency "mocha"
-  s.add_development_dependency "pry", "~> 0.12.0"
-  s.add_development_dependency "pry-byebug", "~> 3.6.0"
-  s.add_development_dependency "rake"
-  s.add_development_dependency "rubocop", "0.64.0"
-  s.add_development_dependency "snowglobe", ">= 0.3.0"
 end
