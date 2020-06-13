@@ -12,12 +12,13 @@ Shoulda Context makes it easy to write understandable and maintainable tests
 under Minitest and Test::Unit within Rails projects or plain Ruby projects. It's
 fully compatible with your existing tests and requires no retooling to use.
 
-**[View the documentation for the latest version (1.2.2)][rubydocs] • [View
-the changelog][changelog]**
+## Quick links
 
+📖 **[Read the documentation for the latest version.][rubydocs]**  
+📢 **[See what's changed in recent versions.][changelog]**
+
+[rubydocs]: http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames
 [changelog]: CHANGELOG.md
-
----
 
 ## Usage
 
@@ -122,8 +123,6 @@ or via `should`):
 * `subject` — an instance of the class under test, which is derived
   automatically from the name of the test case class but is overridable via the
   class method version of `subject` above
-
-[rubydocs]: http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames
 
 ### Assertions
 
