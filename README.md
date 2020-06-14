@@ -20,7 +20,10 @@ fully compatible with your existing tests and requires no retooling to use.
 [rubydocs]: http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames
 [changelog]: CHANGELOG.md
 
-## Usage
+[shoulda-matchers]: https://github.com/thoughtbot/shoulda-matchers
+[minitest_matchers-vaccine]: https://github.com/rmm5t/minitest-matchers_vaccine
+
+## Overview
 
 Instead of writing Ruby methods with `lots_of_underscores`, Shoulda Context lets
 you name your tests and group them together using English.
@@ -138,41 +141,42 @@ may be of use:
 * `assert_reject` — what `should_not` uses internally; asserts that a matcher
   object does not match against a value
 
-## Note on running tests
-
-Normally, you will run a single test like this:
-
-    ruby -I lib -I test path_to_test.rb -n name_of_test_method
-
-When using Shoulda Context, however, you'll need to put a space after the test
-name:
-
-    ruby -I lib -I test path_to_test.rb -n "test_: a calculator should add two numbers for the sum. "
-
-If this is too cumbersome, consider using the [m] gem to run tests instead:
-
-    m path_to_test.rb:39
-
-[m]: https://github.com/qrush/m
-
 ## Compatibility
 
-Shoulda Context is tested and supported against Rails 4.x+, Minitest 4.x,
-Test::Unit 3.x, and Ruby 2.4+.
+Shoulda Context is [tested][travis] and supported against Ruby 2.4+, Rails 4.2+,
+Minitest 4.x, and Test::Unit 3.x.
 
-## Credits
+## Versioning
 
-Shoulda Context is maintained by [Elliot Winkler][elliot-winkler], [Travis
-Jeffery][travis-jeffery], and thoughtbot. Thank you to all the [contributors].
+Shoulda Context follows Semantic Versioning 2.0 as defined at
+<http://semver.org>.
 
-[elliot-winkler]: https://github.com/mcmire
-[travis-jeffery]: https://github.com/travisjeffery
-[contributors]: https://github.com/thoughtbot/shoulda-context/contributors
+## Team
 
-## License
+Shoulda Context is maintained by [Elliot Winkler][mcmire]. It was previously
+maintained by [Travis Jeffery][travisjeffery].
 
-Shoulda Context is copyright © 2006-2020 [thoughtbot, inc][thoughtbot-website].
-It is free software, and may be redistributed under the terms specified in the
-[MIT-LICENSE](MIT-LICENSE) file.
+[mcmire]: https://github.com/mcmire
+[travisjeffery]: https://github.com/travisjeffery
+
+## Copyright/License
+
+Shoulda Context is copyright © 2006-2020 Tammer Saleh and [thoughtbot,
+inc][thoughtbot-website]. It is free and opensource software and may be
+redistributed under the terms specified in the [LICENSE](LICENSE) file.
 
 [thoughtbot-website]: https://thoughtbot.com
+
+## About thoughtbot
+
+![thoughtbot][thoughtbot-logo]
+
+[thoughtbot-logo]: https://presskit.thoughtbot.com/images/thoughtbot-logo-for-readmes.svg
+
+The names and logos for thoughtbot are trademarks of thoughtbot, inc.
+
+We are passionate about open source software. See [our other
+projects][community]. We are [available for hire][hire].
+
+[community]: https://thoughtbot.com/community?utm_source=github
+[hire]: https://thoughtbot.com?utm_source=github
