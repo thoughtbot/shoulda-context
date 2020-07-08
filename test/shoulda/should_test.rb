@@ -192,14 +192,13 @@ class ShouldTest < PARENT_TEST_CASE
     end
   end
 
-  def self.this_is_missing(foo, k: 1)
-  end
+  def self.this_is_missing(foo, bar: 1) end
 
   def test_should_pass_on_missing_method
-    context = Shoulda::Context::Context.new("context name", self.class) do; end
+    context = Shoulda::Context::Context.new("context name", self.class) {}
 
     assert_nothing_raised do
-      h = { k: 42 }
+      h = { bar: 42 }
       context.this_is_missing(h)
     end
   end
