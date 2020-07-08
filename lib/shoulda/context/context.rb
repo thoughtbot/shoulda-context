@@ -208,6 +208,8 @@ module Shoulda
       def method_missing(method, *args, &blk)
         test_unit_class.send(method, *args, &blk)
       end
+      ruby2_keywords :method_missing if respond_to?(:ruby2_keywords, true)
+
     end
 
     class DuplicateTestError < RuntimeError; end
