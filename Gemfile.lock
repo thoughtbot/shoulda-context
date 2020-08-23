@@ -45,7 +45,7 @@ GEM
       power_assert
     thor (1.0.1)
     unicode-display_width (1.6.1)
-    warnings_logger (0.1.0)
+    warnings_logger (0.1.1)
 
 PLATFORMS
   ruby
