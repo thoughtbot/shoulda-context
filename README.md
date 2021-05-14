@@ -12,6 +12,15 @@ Shoulda Context makes it easy to write understandable and maintainable tests
 under Minitest and Test::Unit within Rails projects or plain Ruby projects. It's
 fully compatible with your existing tests and requires no retooling to use.
 
+## Instalation
+
+Add this line to your gemfile
+gem 'shoulda-context'
+and bundle
+
+require gem in your test_helper
+`require 'shoulda-context'`
+
 ## Quick links
 
 📖 **[Read the documentation for the latest version.][rubydocs]**  
