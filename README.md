@@ -15,7 +15,7 @@ fully compatible with your existing tests and requires no retooling to use.
 ## Instalation
 
 Add this line to your gemfile
-gem 'shoulda-context'
+`gem 'shoulda-context'`
 and bundle
 
 require gem in your test_helper
