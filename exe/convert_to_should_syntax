@@ -31,7 +31,7 @@ usage("Temp directory '#{TMP}' is not valid. Set TMPDIR environment variable to 
 
 file = ARGV.shift
 tmpfile = File.join(TMP, File.basename(file))
-usage("File '#{file}' doesn't exist") unless File.exists?(file)
+usage("File '#{file}' doesn't exist") unless File.exist?(file)
 
 FileUtils.cp(file, tmpfile)
 contents = File.read(tmpfile)
