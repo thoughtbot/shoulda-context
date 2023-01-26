@@ -23,6 +23,25 @@ fully compatible with your existing tests and requires no retooling to use.
 [shoulda-matchers]: https://github.com/thoughtbot/shoulda-matchers
 [minitest_matchers-vaccine]: https://github.com/rmm5t/minitest-matchers_vaccine
 
+## Getting started
+
+If you're working on a Rails app, then make sure to add this gem to the `test`
+group in your Gemfile:
+
+``` ruby
+group :test do
+  gem 'shoulda-context', '~> 2.0'
+end
+```
+
+If you're not working on a Rails app, then you can simply add:
+
+``` ruby
+gem 'shoulda-context', '~> 2.0'
+```
+
+Then run `bundle install`.
+
 ## Overview
 
 Instead of writing Ruby methods with `lots_of_underscores`, Shoulda Context lets
