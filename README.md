@@ -1,7 +1,7 @@
 # Shoulda Context [![Gem Version][version-badge]][rubygems] [![Build Status][travis-badge]][travis] ![Downloads][downloads-badge] [![Hound][hound-badge]][hound]
 
 [version-badge]: https://img.shields.io/gem/v/shoulda-context.svg
-[rubygems]: https://rubygems.org/gems/shoulda-matchers
+[rubygems]: https://rubygems.org/gems/shoulda-context
 [travis-badge]: https://img.shields.io/travis/thoughtbot/shoulda-context/master.svg
 [travis]: https://travis-ci.org/thoughtbot/shoulda-context
 [downloads-badge]: https://img.shields.io/gem/dtv/shoulda-context.svg
@@ -20,8 +20,7 @@ fully compatible with your existing tests and requires no retooling to use.
 [rubydocs]: http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames
 [changelog]: CHANGELOG.md
 
-[shoulda-matchers]: https://github.com/thoughtbot/shoulda-matchers
-[minitest_matchers-vaccine]: https://github.com/rmm5t/minitest-matchers_vaccine
+[shoulda-context]: https://github.com/thoughtbot/shoulda-context
 
 ## Getting started
 
