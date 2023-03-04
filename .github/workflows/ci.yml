@@ -38,6 +38,7 @@ jobs:
           - { ruby: 2.4.10, appraisal: rails_5_2 }
           - { ruby: 2.4.10, appraisal: rails_5_1 }
           - { ruby: 2.6.10, appraisal: rails_4_2 }
+          - { ruby: 2.7.7, appraisal: rails_5_0 }
           - { ruby: 2.7.7, appraisal: rails_4_2 }
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.appraisal }}.gemfile
