@@ -89,27 +89,25 @@ appraise "rails_5_2" do
   gem "spring-watcher-listen", "~> 2.0.0"
 end
 
-if  Gem::Requirement.new('>= 2.5.0').satisfied_by?(Gem::Version.new(RUBY_VERSION))
-  appraise "rails_6_0" do
-    instance_eval(&shared_dependencies)
+appraise "rails_6_0" do
+  instance_eval(&shared_dependencies)
 
-    gem "rails", "~> 6.0.2"
-    gem "puma", "~> 4.1"
-    gem "sass-rails", ">= 6"
-    gem "webpacker", "~> 4.0"
-    gem "turbolinks", "~> 5"
-    gem "jbuilder", "~> 2.7"
-    gem "bcrypt", "~> 3.1.7"
-    gem "bootsnap", ">= 1.4.2", require: false
-    gem "listen", ">= 3.0.5", "< 3.2"
-    gem "spring-watcher-listen", "~> 2.0.0"
-    gem "capybara", ">= 2.15"
-    gem "selenium-webdriver"
-    gem "sqlite3", "~> 1.4.0"
-    gem "webdrivers"
+  gem "rails", "~> 6.0.2"
+  gem "puma", "~> 4.1"
+  gem "sass-rails", ">= 6"
+  gem "webpacker", "~> 4.0"
+  gem "turbolinks", "~> 5"
+  gem "jbuilder", "~> 2.7"
+  gem "bcrypt", "~> 3.1.7"
+  gem "bootsnap", ">= 1.4.2", require: false
+  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "capybara", ">= 2.15"
+  gem "selenium-webdriver"
+  gem "sqlite3", "~> 1.4.0"
+  gem "webdrivers"
 
-    # Other dependencies
-    gem "rails-controller-testing", ">= 1.0.4"
-    gem "pg", "~> 1.1", platform: :ruby
-  end
+  # Other dependencies
+  gem "rails-controller-testing", ">= 1.0.4"
+  gem "pg", "~> 1.1", platform: :ruby
 end
