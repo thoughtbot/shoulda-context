@@ -125,10 +125,8 @@ class HelpersTest < PARENT_TEST_CASE
 
     context "when given to assert_accepts" do
       setup do
-        begin
-          assert_accepts @matcher, 'target'
-        rescue ASSERTION_CLASS => @error
-        end
+        assert_accepts @matcher, 'target'
+      rescue ASSERTION_CLASS => @error
       end
 
       should "fail" do

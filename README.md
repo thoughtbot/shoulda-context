@@ -14,7 +14,7 @@ fully compatible with your existing tests and requires no retooling to use.
 
 ## Quick links
 
-📖 **[Read the documentation for the latest version.][rubydocs]**  
+📖 **[Read the documentation for the latest version.][rubydocs]**
 📢 **[See what's changed in recent versions.][changelog]**
 
 [rubydocs]: http://rubydoc.info/github/thoughtbot/shoulda-context/master/frames
@@ -161,7 +161,7 @@ may be of use:
 
 ## Compatibility
 
-Shoulda Context is [tested][travis] and supported against Ruby 2.4+, Rails 4.2+,
+Shoulda Context is [tested][travis] and supported against Ruby 2.5+, Rails 4.2+,
 Minitest 4.x, and Test::Unit 3.x.
 
 ## Versioning
