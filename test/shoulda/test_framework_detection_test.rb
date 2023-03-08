@@ -2,12 +2,6 @@ require "test_helper"
 require "tempfile"
 
 class TestFrameworkDetectionTest < PARENT_TEST_CASE
-  if Tests::CurrentBundle.instance.current_appraisal == "rails_5_2"
-    should "detect Minitest 5.x w/ Rails 5.2" do
-      assert_integration_with_rails_and "Minitest::Test"
-    end
-  end
-
   if TEST_FRAMEWORK == "minitest"
     should "detect Minitest 5.x when it is loaded standalone" do
       assert_integration_with "Minitest::Test", setup: <<-RUBY
