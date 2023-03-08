@@ -14,12 +14,6 @@ class TestFrameworkDetectionTest < PARENT_TEST_CASE
     end
   end
 
-  if Tests::CurrentBundle.instance.current_appraisal == "rails_5_0"
-    should "detect Minitest 5.x w/ Rails 5.0" do
-      assert_integration_with_rails_and "Minitest::Test"
-    end
-  end
-
   if TEST_FRAMEWORK == "minitest"
     should "detect Minitest 5.x when it is loaded standalone" do
       assert_integration_with "Minitest::Test", setup: <<-RUBY

@@ -161,7 +161,7 @@ may be of use:
 
 ## Compatibility
 
-Shoulda Context is [tested][travis] and supported against Ruby 2.7+, Rails 5.0+,
+Shoulda Context is [tested][travis] and supported against Ruby 2.7+, Rails 5.1+,
 Minitest 4.x, and Test::Unit 3.x.
 
 ## Versioning
