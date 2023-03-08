@@ -22,7 +22,6 @@ jobs:
         ruby:
           - 2.7.7
         appraisal:
-          - rails_4_2
           - rails_5_0
           - rails_5_1
           - rails_5_2
@@ -32,7 +31,6 @@ jobs:
           - test_unit
         exclude:
           - { ruby: 2.7.7, appraisal: rails_5_0 }
-          - { ruby: 2.7.7, appraisal: rails_4_2 }
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.appraisal }}.gemfile
       TEST_FRAMEWORK: ${{ matrix.test_framework }}
