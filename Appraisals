@@ -22,21 +22,6 @@ shared_dependencies = proc do
   instance_eval(&shared_test_dependencies)
 end
 
-appraise "rails_5_0" do
-  instance_eval(&shared_dependencies)
-
-  gem "rails", "~> 5.0.7"
-  gem "rails-controller-testing", ">= 1.0.1"
-  gem "puma", "~> 3.0"
-  gem "sass-rails", "~> 5.0"
-  gem "jquery-rails"
-  gem "turbolinks", "~> 5"
-  gem "jbuilder", "~> 2.5"
-  gem "bcrypt", "~> 3.1.7"
-  gem "listen", "~> 3.0.5"
-  gem "spring-watcher-listen", "~> 2.0.0"
-end
-
 appraise "rails_5_1" do
   instance_eval(&shared_dependencies)
   gem "rails", "~> 5.1.6"
