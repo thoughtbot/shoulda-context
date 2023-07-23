@@ -80,7 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
-  bundler (~> 1.0)
+  bundler (~> 2.0)
   byebug
   m
   minitest
@@ -97,4 +97,4 @@ DEPENDENCIES
   warnings_logger
 
 BUNDLED WITH
-   1.17.3
+   2.2.33
