@@ -6,6 +6,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (7.0.6)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
     appraisal (2.2.0)
       bundler
       rake
@@ -13,6 +18,9 @@ GEM
     ast (2.4.2)
     byebug (10.0.2)
     coderay (1.1.2)
+    concurrent-ruby (1.2.2)
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
     m (1.5.1)
@@ -33,6 +41,7 @@ GEM
       byebug (~> 10.0)
       pry (~> 0.10)
     racc (1.7.1)
+    rack (3.0.8)
     rainbow (3.1.1)
     rake (13.0.1)
     regexp_parser (2.8.1)
@@ -50,11 +59,17 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-rails (2.20.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     snowglobe (0.3.0)
     test-unit (3.3.5)
       power_assert
     thor (1.0.1)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     warnings_logger (0.1.1)
 
@@ -72,6 +87,7 @@ DEPENDENCIES
   pry-byebug (~> 3.6.0)
   rake
   rubocop
+  rubocop-rails
   shoulda-context!
   snowglobe (>= 0.3.0)
   test-unit
