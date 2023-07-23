@@ -7,7 +7,9 @@ module Shoulda
       attr_accessor :setup_blocks       # blocks given via setup methods
       attr_accessor :teardown_blocks    # blocks given via teardown methods
       attr_accessor :shoulds            # array of hashes representing the should statements
+      # rubocop:disable Layout/LineLength
       attr_accessor :should_eventuallys # array of hashes representing the should eventually statements
+      # rubocop:enable Layout/LineLength
 
       # accessor with cache
       def subject_block
@@ -213,4 +215,3 @@ module Shoulda
     class DuplicateTestError < RuntimeError; end
   end
 end
-

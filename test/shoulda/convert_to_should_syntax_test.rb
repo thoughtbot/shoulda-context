@@ -47,7 +47,8 @@ class ConvertToShouldSyntaxTest < PARENT_TEST_CASE
 
   def test_convert_to_should_syntax
     File.open(FIXTURE_PATH, "w") {|f| f.write(BEFORE_FIXTURE)}
-    cmd = "#{RUBY} #{File.join(File.dirname(__FILE__), '../../exe/convert_to_should_syntax')} #{FIXTURE_PATH}"
+    cmd = "#{RUBY} #{File.join(File.dirname(__FILE__),
+      '../../exe/convert_to_should_syntax',)} #{FIXTURE_PATH}"
     output = `#{cmd}`
     File.unlink($1) if output.match(/has been stored in '([^']+)/)
     assert_match(/has been converted/, output)
