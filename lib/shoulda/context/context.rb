@@ -100,7 +100,7 @@ module Shoulda
 
       def test_methods
         @test_methods ||= Hash.new { |h,k|
-          h[k] = Hash[k.instance_methods.map { |n| [n, true] }]
+          h[k] = k.instance_methods.each_with_object({}) { |n, a| a[n] = true }
         }
       end
 
@@ -213,4 +213,3 @@ module Shoulda
     class DuplicateTestError < RuntimeError; end
   end
 end
-
