@@ -171,13 +171,18 @@ Shoulda Context follows Semantic Versioning 2.0 as defined at
 
 ## Team
 
-Shoulda Context is maintained by [Pedro Paiva][VSPPedro] and [Elliot
-Winkler][mcmire]. It was previously maintained by [Travis
-Jeffery][travisjeffery].
+Shoulda Context is currently maintained by [Pedro Paiva][VSPPedro]. Previous
+maintainers include [Elliot Winkler][mcmire], [Travis Jeffery][travisjeffery],
+[Gabe Berke-Williams][gabebw], [Ryan McGeary][rmm5t], [Joe Ferris][jferris], and
+[Tammer Saleh][tammersaleh].
 
 [VSPPedro]: https://github.com/VSPPedro
 [mcmire]: https://github.com/mcmire
 [travisjeffery]: https://github.com/travisjeffery
+[gabebw]: https://github.com/gabebw
+[rmm5t]: https://github.com/rmm5t
+[jferris]: https://github.com/jferris
+[tammersaleh]: https://github.com/tammersaleh
 
 ## Copyright/License
 
