@@ -61,13 +61,14 @@ module Shoulda
         #   should validate_presence_of(:first_name).with_message(/gotta be there/)
         #
 
-        def should(name_or_matcher, options = {}, &blk)
+        def should(name_or_matcher, options = {}, source_location = (loc = caller_locations(1, 1)[0]
+                                                                     [loc.path, loc.lineno]), &blk)
           if Shoulda::Context.current_context
-            Shoulda::Context.current_context.should(name_or_matcher, options, &blk)
+            Shoulda::Context.current_context.should(name_or_matcher, options, source_location, &blk)
           else
             context_name = self.name.gsub(/Test$/, "") if name
             context = Shoulda::Context::Context.new(context_name, self) do
-              should(name_or_matcher, options, &blk)
+              should(name_or_matcher, options, source_location, &blk)
             end
             context.build
           end
@@ -80,13 +81,14 @@ module Shoulda
         # === Example:
         #
         #   should_not set_the_flash
-        def should_not(matcher)
+        def should_not(matcher, source_location = (loc = caller_locations(1, 1)[0]
+                                                   [loc.path, loc.lineno]))
           if Shoulda::Context.current_context
-            Shoulda::Context.current_context.should_not(matcher)
+            Shoulda::Context.current_context.should_not(matcher, source_location)
           else
             context_name = self.name.gsub(/Test$/, "") if name
             context = Shoulda::Context::Context.new(context_name, self) do
-              should_not(matcher)
+              should_not(matcher, source_location)
             end
             context.build
           end

@@ -271,7 +271,7 @@ class ShouldTest < PARENT_TEST_CASE
 
   def test_should_create_a_one_off_context_and_build_it_on_test_case_should
     s = mock("test")
-    Shoulda::Context::Context.any_instance.expects(:should).with("rock", {}).returns(s)
+    Shoulda::Context::Context.any_instance.expects(:should).with("rock", {}, [__FILE__, __LINE__ + 2]).returns(s)
     Shoulda::Context::Context.any_instance.expects(:build)
     self.class.should "rock" do; end
   end
