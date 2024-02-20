@@ -56,10 +56,20 @@ module Shoulda
         self.teardown_blocks << blk
       end
 
-      def should(name_or_matcher, options = {}, &blk)
+      class LambdaWithLocation < Proc
+        attr_reader :source_location
+
+        def initialize(source_location, &blk)
+          @source_location = source_location
+          super(&blk)
+        end
+      end
+
+      def should(name_or_matcher, options = {}, source_location = (loc = caller_locations(1, 1)[0]
+                                                                   [loc.path, loc.lineno]), &blk)
         if name_or_matcher.respond_to?(:description) && name_or_matcher.respond_to?(:matches?)
           name = name_or_matcher.description
-          blk = lambda { assert_accepts name_or_matcher, subject }
+          blk = LambdaWithLocation.new(source_location, &lambda { assert_accepts name_or_matcher, subject })
         else
           name = name_or_matcher
         end
@@ -71,9 +81,10 @@ module Shoulda
         end
       end
 
-      def should_not(matcher)
+      def should_not(matcher, source_location = (loc = caller_locations(1, 1)[0]
+                                                 [loc.path, loc.lineno]))
         name = matcher.description
-        blk = lambda { assert_rejects matcher, subject }
+        blk = LambdaWithLocation.new(source_location, &lambda { assert_rejects matcher, subject })
         self.shoulds << { :name => "not #{name}", :block => blk }
       end
 

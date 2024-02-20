@@ -11,25 +11,44 @@ class RerunSnippetTest < PARENT_TEST_CASE
           require_relative "../../config/environment"
 
           class FailingTest < #{PARENT_TEST_CASE}
+            class FakeMatcher
+              attr_reader :subject
+              attr_accessor :fail
+
+              def description
+                "be a fake matcher"
+              end
+
+              def matches?(subject)
+                @subject = subject
+                !@fail
+              end
+
+              def failure_message
+                "positive failure message"
+              end
+
+              def failure_message_when_negated
+                "negative failure message"
+              end
+            end
+
             should "fail" do
               assert false
             end
+
+            should_not FakeMatcher.new.tap { |m| m.fail = false }
+            should FakeMatcher.new.tap { |m| m.fail = true }
           end
         RUBY
 
         command_runner = app.run_n_unit_test_suite
 
-        expected_file_path_with_line_number =
-          if rails_version >= 6
-            "rails test test/models/failing_test.rb:5"
-          else
-            "bin/rails test test/models/failing_test.rb:5"
-          end
+        expected_executable = rails_version >= 6 ? "rails test" : "bin/rails test"
 
-        assert_includes(
-          command_runner.output,
-          expected_file_path_with_line_number
-        )
+        assert_includes(command_runner.output, "#{expected_executable} test/models/failing_test.rb:27")
+        assert_includes(command_runner.output, "#{expected_executable} test/models/failing_test.rb:31")
+        assert_includes(command_runner.output, "#{expected_executable} test/models/failing_test.rb:32")
       end
     end
   end
