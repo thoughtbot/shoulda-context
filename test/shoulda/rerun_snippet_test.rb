@@ -3,7 +3,7 @@ require "test_helper"
 class RerunSnippetTest < PARENT_TEST_CASE
   context "A Rails application with shoulda-context added to it" do
     should "display the correct rerun snippet when a test fails" do
-      if app.rails_version >= 5 && TEST_FRAMEWORK == "minitest"
+      if TEST_FRAMEWORK == "minitest"
         app.create
 
         app.write_file("test/models/failing_test.rb", <<~RUBY)
@@ -44,7 +44,7 @@ class RerunSnippetTest < PARENT_TEST_CASE
 
         command_runner = app.run_n_unit_test_suite
 
-        expected_executable = rails_version >= 6 ? "rails test" : "bin/rails test"
+        expected_executable = "rails test"
 
         assert_includes(command_runner.output, "#{expected_executable} test/models/failing_test.rb:27")
         assert_includes(command_runner.output, "#{expected_executable} test/models/failing_test.rb:31")
