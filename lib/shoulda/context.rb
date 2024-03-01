@@ -9,7 +9,6 @@ require "shoulda/context/world"
 
 if defined?(Rails)
   require "shoulda/context/railtie"
-  require "shoulda/context/rails_test_unit_reporter_patch"
 end
 
 Shoulda::Context.configure do |config|
