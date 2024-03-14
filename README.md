@@ -191,18 +191,7 @@ Shoulda Context is copyright © Tammer Saleh and [thoughtbot,
 inc][thoughtbot-website]. It is free and opensource software and may be
 redistributed under the terms specified in the [LICENSE](LICENSE) file.
 
-[thoughtbot-website]: https://thoughtbot.com
+[thoughtbot-website]: https://thoughtbot.com?utm_source=github
 
-## About thoughtbot
-
-![thoughtbot][thoughtbot-logo]
-
-[thoughtbot-logo]: https://thoughtbot.com/brand_assets/93:44.svg
-
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-We are passionate about open source software. See [our other
-projects][community]. We are [available for hire][hire].
-
-[community]: https://thoughtbot.com/community?utm_source=github
-[hire]: https://thoughtbot.com?utm_source=github
+<!-- START /templates/footer.md -->
+<!-- END /templates/footer.md -->
