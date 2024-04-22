@@ -24,7 +24,7 @@
 * Fix a method redefinition warning by @Earlopain. ([#94])
 
 [#0551d18c92eebd94db70917d668202508b7d2268]: https://github.com/thoughtbot/shoulda-context/commit/0551d18c92eebd94db70917d668202508b7d2268
-[#92]: https://github.com/thoughtbot/shoulda-context/commit/92
+[#92]: https://github.com/thoughtbot/shoulda-context/pull/92
 [#94]: https://github.com/thoughtbot/shoulda-context/pull/94
 
 ### Features
