@@ -29,14 +29,14 @@ group in your Gemfile:
 
 ``` ruby
 group :test do
-  gem 'shoulda-context', '~> 2.0'
+  gem 'shoulda-context', '~> 3.0.0.rc1'
 end
 ```
 
 If you're not working on a Rails app, then you can simply add:
 
 ``` ruby
-gem 'shoulda-context', '~> 2.0'
+gem 'shoulda-context', '~> 3.0.0.rc1'
 ```
 
 Then run `bundle install`.
