@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.0.0.rc1 - 2024-04-21
 
 ### Backward-incompatible changes
 
