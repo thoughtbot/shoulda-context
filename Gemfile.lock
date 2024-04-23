@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shoulda-context (2.0.0)
+    shoulda-context (3.0.0.rc1)
 
 GEM
   remote: https://rubygems.org/
