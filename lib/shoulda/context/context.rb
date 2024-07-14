@@ -216,8 +216,8 @@ module Shoulda
         end
       end
 
-      def method_missing(method, *args, &blk)
-        test_unit_class.send(method, *args, &blk)
+      def method_missing(...)
+        test_unit_class.send(...)
       end
     end
 
