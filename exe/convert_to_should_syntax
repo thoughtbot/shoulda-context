@@ -21,13 +21,18 @@ def usage(msg = nil)
   puts "    ..."
   puts "  end"
   puts
-  puts "A copy of the old file will be left under #{TMP} in case\nthis script just seriously screws up"
+  puts "A copy of the old file will be left under #{TMP} in case"
+  puts "this script just seriously screws up"
   puts
   exit (msg ? 2 : 0)
 end
 
 usage("Wrong number of arguments.") unless ARGV.size == 1
-usage("Temp directory '#{TMP}' is not valid. Set TMPDIR environment variable to a writeable directory.") unless File.directory?(TMP) && File.writable?(TMP)
+
+unless File.directory?(TMP) && File.writable?(TMP)
+  usage("Temp directory '#{TMP}' is not valid. \
+Set TMPDIR environment variable to a writeable directory.")
+end
 
 file = ARGV.shift
 tmpfile = File.join(TMP, File.basename(file))
@@ -39,4 +44,5 @@ contents.gsub!(/def test_should_(\S+)/) {|line| "should \"#{$1.tr('_', ' ')}\" d
 contents.gsub!(/def test_(\S+)/) {|line| "should \"RENAME ME: test #{$1.tr('_', ' ')}\" do"}
 File.open(file, 'w') { |f| f.write(contents) }
 
-puts "File '#{file}' has been converted to 'should' syntax.  Old version has been stored in '#{tmpfile}'"
+puts "File '#{file}' has been converted to 'should' syntax. \
+Old version has been stored in '#{tmpfile}'"

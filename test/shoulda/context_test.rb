@@ -28,7 +28,8 @@ class ContextTest < PARENT_TEST_CASE
       end
 
       should "be named correctly" do
-        assert_match(/^test: context with setup block and a subcontext should be named correctly/, normalized_name)
+        assert_match(/^test: context with setup block and a subcontext should be named correctly/,
+          normalized_name)
       end
 
       should "run the setup blocks in order" do
@@ -37,9 +38,14 @@ class ContextTest < PARENT_TEST_CASE
     end
 
     context_macro do
+      # rubocop:disable Layout/LineLength
       should "have name set right" do
-        assert_match(/^test: context with setup block with a subcontext made by a macro should have name set right/, normalized_name)
+        assert_match(
+          /^test: context with setup block with a subcontext made by a macro should have name set right/,
+          normalized_name
+        )
       end
+      # rubocop:enable Layout/LineLength
 
       should "run the setup block of that context macro" do
         assert_equal :foo, @context_macro
@@ -108,11 +114,13 @@ class ContextTest < PARENT_TEST_CASE
         teardown { cleanup_count -= 1 }
       end
 
+    # rubocop:disable Layout/LineLength
       2.times do |i|
         should "also call all setups and all teardowns in parent and subcontext (check ##{i + 1})" do
           assert_equal 4, cleanup_count
         end
       end
+    # rubocop:enable Layout/LineLength
 
     end
 
