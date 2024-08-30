@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class ContextTest < PARENT_TEST_CASE
-  def self.context_macro(&blk)
-    context "with a subcontext made by a macro" do
+  def self.context_macro(type:, &blk)
+    context "with a #{type.inspect} subcontext made by a macro" do
       setup { @context_macro = :foo }
 
       merge_block(&blk)
@@ -36,9 +36,9 @@ class ContextTest < PARENT_TEST_CASE
       end
     end
 
-    context_macro do
+    context_macro type: :test do
       should "have name set right" do
-        assert_match(/^test: context with setup block with a subcontext made by a macro should have name set right/, normalized_name)
+        assert_match(/^test: context with setup block with a :type subcontext made by a macro should have name set right/, normalized_name)
       end
 
       should "run the setup block of that context macro" do
