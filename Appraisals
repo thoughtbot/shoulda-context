@@ -33,7 +33,7 @@ appraise "rails_6_0" do
   gem "jbuilder", "~> 2.7"
   gem "bcrypt", "~> 3.1.7"
   gem "bootsnap", ">= 1.4.2", require: false
-  gem "listen", ">= 3.0.5", "< 3.2"
+  gem 'listen', '~> 3.2'
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
@@ -55,8 +55,9 @@ appraise "rails_6_1" do
   gem "jbuilder", "~> 2.7"
   gem "bcrypt", "~> 3.1.7"
   gem "bootsnap", ">= 1.4.2", require: false
-  gem "listen", ">= 3.0.5", "< 3.2"
+  gem 'listen', '~> 3.2'
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "rack-mini-profiler", "~> 2.0.0"
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   gem "sqlite3", "~> 1.4.0"

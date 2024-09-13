@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mcmire/snowglobe.git
+  revision: e0b1c04da37bae7e820c6cf2b962bc0edfdddd7d
+  branch: master
+  specs:
+    snowglobe (0.3.0)
+
 PATH
   remote: ..
   specs:
@@ -88,7 +95,7 @@ GEM
     crass (1.0.6)
     digest (3.1.1)
     erubi (1.12.0)
-    ffi (1.15.5)
+    ffi (1.16.3)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -98,10 +105,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.9.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -208,7 +214,6 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.12.0)
     ruby2_keywords (0.0.5)
-    ruby_dep (1.5.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -223,7 +228,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    snowglobe (0.3.0)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -278,7 +282,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
-  listen (>= 3.0.5, < 3.2)
+  listen (~> 3.2)
   m
   minitest
   minitest-reporters
@@ -294,7 +298,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   shoulda-context!
-  snowglobe (>= 0.3.0)
+  snowglobe!
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
