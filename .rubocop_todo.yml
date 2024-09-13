@@ -196,14 +196,6 @@ Rails/RefuteMethods:
   Exclude:
     - 'test/shoulda/helpers_test.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: strict, flexible
-Rails/TimeZone:
-  Exclude:
-    - 'lib/shoulda/context/proc_extensions.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
@@ -267,7 +259,6 @@ Style/MutableConstant:
 # Cop supports --auto-correct.
 Style/ParallelAssignment:
   Exclude:
-    - 'lib/shoulda/context/proc_extensions.rb'
     - 'test/shoulda/should_test.rb'
 
 # Offense count: 1

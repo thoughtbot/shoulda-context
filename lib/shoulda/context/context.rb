@@ -36,12 +36,7 @@ module Shoulda
       end
 
       def merge_block(&blk)
-        if self.respond_to?(:instance_exec)
-          self.instance_exec(&blk)
-        else
-          # deprecated in Rails 4.x
-          blk.bind(self).call
-        end
+        self.instance_exec(&blk)
       end
 
       def context(name, &blk)
@@ -170,23 +165,13 @@ module Shoulda
 
       def run_current_setup_blocks(binding)
         setup_blocks.each do |setup_block|
-          if binding.respond_to?(:instance_exec)
-            binding.instance_exec(&setup_block)
-          else
-            # deprecated in Rails 4.x
-            setup_block.bind(binding).call
-          end
+          binding.instance_exec(&setup_block)
         end
       end
 
       def run_all_teardown_blocks(binding)
         teardown_blocks.reverse.each do |teardown_block|
-          if binding.respond_to?(:instance_exec)
-            binding.instance_exec(&teardown_block)
-          else
-            # deprecated in Rails 4.x
-            teardown_block.bind(binding).call
-          end
+          binding.instance_exec(&teardown_block)
         end
         self.parent.run_all_teardown_blocks(binding) if am_subcontext?
       end
