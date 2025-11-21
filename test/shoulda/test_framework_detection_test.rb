@@ -44,7 +44,10 @@ class TestFrameworkDetectionTest < PARENT_TEST_CASE
     options = expected_test_cases.last.is_a?(Hash) ? expected_test_cases.pop : {}
     setup = options[:setup] || ""
     output = execute(file_that_detects_test_framework_test_cases([setup]))
-    actual_test_cases = output.split("\n").first.split(", ")
+    output_lines = output.split("\n")
+    # Ignore Bundler output if present
+    output_lines.shift if output_lines.first =~ /Resolving dependencies.../
+    actual_test_cases = output_lines.first.split(", ")
     assert_equal expected_test_cases, actual_test_cases
   end
 
